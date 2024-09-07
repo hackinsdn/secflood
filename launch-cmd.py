@@ -29,11 +29,11 @@ def calc_random_delay(params, dist):
 
 while True:
     delay = calc_random_delay(args.delay, args.delay_strategy)
-    print(time.strftime("%Y-%m-%d %H:%M:%S", f"waiting {delay} seconds")
+    print(time.strftime("%Y-%m-%d %H:%M:%S"), f"waiting {delay} seconds")
     time.sleep(delay)
-    print(time.strftime("%Y-%m-%d %H:%M:%S", f"running {args.cmd}")
+    print(time.strftime("%Y-%m-%d %H:%M:%S"), f"running {args.cmd}")
     subprocess.run(args.cmd, shell=True)
     args.repeat -= 1
-    print(time.strftime("%Y-%m-%d %H:%M:%S", f"remain rounds {args.repeat}")
+    print(time.strftime("%Y-%m-%d %H:%M:%S"), f"remain rounds {args.repeat}")
     if args.repeat == 0:
         break
