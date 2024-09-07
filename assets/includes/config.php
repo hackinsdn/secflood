@@ -8,12 +8,12 @@ function getConnectionDB() {
 }
 
 session_start(); 
+
+$name = $_SESSION["user"] ?? "";
+$avatar = "assets/img/profile.jpg";
+$background = "assets/img/background.jpg";
  
 if (!isset($_SESSION["host"]) || !isset($_SESSION["user"]) || !isset($_SESSION["password"])) { 
   header("Location: login.php"); 
-} else {
-  $name = $_SESSION["user"];
-  $avatar = "assets/img/profile.jpg";
-  $background = "assets/img/background.jpg";
 }
 ?>
