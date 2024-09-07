@@ -61,6 +61,7 @@
       }
       return (
         `<tr>
+           <td>${value.command} ${value.arrayInputs.map(x => x.join(' ')).join(' ')} ${value.arrayParams.join(' ')} ${value.target}</td>
            <td>${value.repeat}</td>
            <td>${delayStr}</td>
          </tr>`
