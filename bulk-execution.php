@@ -77,26 +77,12 @@
     } else {
       benignStreams = {};
     }
-    /* GET repeat-command */
-    var cmdRepeat = 1;
-    var repeat = document.getElementById('repeat-command').value;
-    if (repeat) {
-      cmdRepeat = repeat;
-    }
-    /* GET delay-start */
-    var cmdDelay = 0;
-    var delay = document.getElementById('delay-start').value;
-    if (delay) {
-      cmdDelay = delay;
-    }
     $.post("runBulk.php", {
       "commands" : benignStreams,
-      "repeat" : cmdRepeat,
-      "delay" : cmdDelay 
     }).done(function (data) {
       document.getElementById("bulk-exec-result").innerHTML = data;
       setTimeout(listTasks, 3000);
-    }).fail(function (error) {
+    }).fail(function (xhr, status, error) {
       document.getElementById("bulk-exec-result").innerHTML = error;
     });
   }
