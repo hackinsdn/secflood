@@ -51,7 +51,7 @@ if ($action == "list") {
     $tasks = explode("\n", trim($output));
     $output = " ";
     foreach ($tasks as $task) {
-      $output += "<b class='text-white bg-dark'>$task</b>&nbsp;&nbsp;";
+      $output = $output . "<b class='text-white bg-dark'>$task</b>&nbsp;&nbsp;";
     }
     echo $output;
   }
