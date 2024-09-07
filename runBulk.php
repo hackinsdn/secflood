@@ -112,7 +112,7 @@ foreach($commands as $key => $val) {
   $run = $val["command"] . " " . $cmd . " " . $val["target"];
   $runFull = "tmux new-session -d -s bulk-exe-$key python3 $cur_dir/launch-cmd.py $delay $repeat $delayStrategy --cmd '$run'";
   #shell_exec($runFull);
-  syslog(LOG_INFO, "running command $runFull");
+  error_log("running command $runFull");
   $ssh->setTimeout(0);
   $ssh->exec("echo $password | sudo -S " . $runFull, 'packet_handler');
 }
