@@ -12,7 +12,5 @@
 <script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/Chart.min.js"></script>
-<script src="assets/js/Chart.extension.js"></script>
 <script src="assets/js/argon.js?v=1.0.0"></script>
 <script src="assets/js/canvasjs.min.js"></script>
