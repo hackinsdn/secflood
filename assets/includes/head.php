@@ -13,13 +13,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <!-- Icons -->
-    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/nucleo.css" rel="stylesheet">
+    <link href="assets/css/fontawesome-free-all.min.css" rel="stylesheet">
 
     <!-- Argon CSS -->
     <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
 
-	<!-- Custom CSS Import -->
-	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <!-- Custom CSS Import -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 </head>
 

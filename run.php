@@ -1,5 +1,8 @@
 <?php
-	session_start();
+	set_include_path('assets/libraries/phpseclib/');
+	include('Net/SSH2.php');
+	include('assets/includes/config.php');
+
 	$host = $_SESSION["host"];
 	$user = $_SESSION["user"];
 	$password = $_SESSION["password"];
@@ -9,14 +12,10 @@
 
 	$command = $_POST['command'];
 	$target = $_POST['target'];
-	$arrayInputs = $_POST['arrayInputs'];
-	$arrayCheckbox = $_POST['arrayCheckbox'];
+	$arrayInputs = $_POST['arrayInputs'] ?? [];
+	$arrayParams = $_POST['arrayParams'] ?? [];
 	
 	$cmd = "";
-
-	set_include_path('assets/libraries/phpseclib/');
-	include('Net/SSH2.php');
-	include('assets/includes/config.php');
 
 	$ssh = new Net_SSH2($host);
 	
@@ -36,8 +35,8 @@
 			$cmd = $cmd . " " . $arrayInputs[$i][0] . " " . $arrayInputs[$i][1];
 		}
 
-		for ($i = 0; sizeof($arrayCheckbox) > $i; $i++) {
-			$cmd = $cmd . " " . $arrayCheckbox[$i];
+		for ($i = 0; sizeof($arrayParams) > $i; $i++) {
+			$cmd = $cmd . " " . $arrayParams[$i];
 		}
 
 		$run = $command . " " . $cmd . " " . $target;

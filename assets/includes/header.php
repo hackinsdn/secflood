@@ -1,6 +1,4 @@
-<?php 
-    include("assets/includes/config.php");
-?>
+<?php include("assets/includes/config.php"); ?>
 
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
@@ -31,7 +29,6 @@
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
           </a>
-
           <div class="dropdown-divider"></div>
           <a href="logout.php" class="dropdown-item">
             <i class="ni ni-user-run"></i>
@@ -58,18 +55,6 @@
           </div>
         </div>
       </div>
-      <!-- Form -->
-      <!--
-      <form class="mt-4 mb-3 d-md-none">
-        <div class="input-group input-group-rounded input-group-merge">
-          <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <span class="fa fa-search"></span>
-            </div>
-          </div>
-        </div>
-      </form>-->
       <!-- Navigation -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -91,20 +76,18 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="debian.php">
-            <i class="ni ni-app text-red"></i> Debian
+          <a class="nav-link" href="bulk-execution.php">
+            <i class="ni ni-sound-wave text-blue"></i> Bulk Execution
           </a>
         </li>
-
 
         <li class="nav-item">
           <a class="nav-link" href="reports.php">
             <i class="ni ni-single-copy-04 text-yellow"></i> Reports
           </a>
         </li>
-
-
       </ul>
+
       <!-- Divider -->
       <hr class="my-3">
 
@@ -165,19 +148,6 @@
               <i class="ni ni-single-02"></i>
               <span>My profile</span>
             </a>
-            <!--
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-settings-gear-65"></i>
-              <span>Settings</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a href="./examples/profile.html" class="dropdown-item">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
-            </a>-->
             <div class="dropdown-divider"></div>
             <a href="login.php" class="dropdown-item">
               <i class="ni ni-user-run"></i>
@@ -188,11 +158,10 @@
       </ul>
     </div>
   </nav>
-
   <!-- Header -->
   <!-- USE THIS DIV TO CHANGE THE BACKGROUND -->
   <div class="header pb-8 pt-5 pt-md-8" style="background-image: url(<?php echo $background; ?>); background-size: cover; background-position: bottom;">
     <div class="container-fluid">
-      
     </div>
   </div>
+  <!-- to be closed on footer.php -->
