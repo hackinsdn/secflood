@@ -42,7 +42,7 @@
 <script type="text/javascript">
   $(document).ready(function () {
     loadTable();
-    setTimeout(listTasks, 3000);
+    setTimeout(listTasks, 2000);
   });
   function loadTable() {
     var benignStreams = localStorage.getItem('benignStreams');
@@ -81,7 +81,7 @@
       "commands" : benignStreams,
     }).done(function (data) {
       document.getElementById("bulk-exec-result").innerHTML = data;
-      setTimeout(listTasks, 3000);
+      setTimeout(listTasks, 2000);
     }).fail(function (xhr, status, error) {
       document.getElementById("bulk-exec-result").innerHTML = error;
     });
@@ -104,7 +104,7 @@
       "action" : "stop",
     }).done(function (data) {
       document.getElementById("bulk-exec-result").innerHTML = data;
-      setTimeout(listTasks, 3000);
+      setTimeout(listTasks, 2000);
     }).fail(function (xhr, status, error) {
       document.getElementById("bulk-exec-result").innerHTML = error;
     });
