@@ -1,4 +1,4 @@
-|Stable| |Tag| |License| |Build| |Coverage|
+[![stable-badge]][stable-link] [![ci-badge]][ci-link] [![tag-badge]][ci-link] [![license-badge]][license-link]
 
 <div align="center">
     <h1><code>SecFlood</code></h1>
@@ -46,3 +46,15 @@ TODO: document better the usage of the interfaces.
 # Credits
 
 SecFlood was originally based on [Kali-Linux-Tools-Interface](https://github.com/lucasfrag/Kali-Linux-Tools-Interface), a tool created by [lucasfrag](https://github.com/lucasfrag/) as a Graphical Web interface developed to facilitate the use of security information tools. Read more documentation about Kali-Linux-Tools-Interface [here](https://medium.com/@lucasfrag/documentação-do-projeto-final-de-ads-f80a1117841f) or [original README](README-orig.md).
+
+
+<!-- URLs -->
+
+[stable-badge]: https://img.shields.io/badge/stability-stable-green.svg
+[stable-link]: https://github.com/hackinsdn/secflood
+[ci-badge]: https://github.com/hackinsdn/secflood/actions/workflows/test.yml/badge.svg
+[ci-link]: https://github.com/hackinsdn/secflood/actions/workflows/test.yml
+[tag-badge]: https://img.shields.io/github/tag/hackinsdn/secflood.svg
+[tag-link]: https://github.com/hackinsdn/secflood/tags
+[license-badge]: https://img.shields.io/github/license/hackinsdn/secflood.svg
+[license-link]: https://github.com/hackinsdn/secflood/blob/master/LICENSE
