@@ -3,7 +3,7 @@
 <div class="row align-items-center justify-content-xl-between">
   <div class="col-xl-5">
     <div class="copyright text-center text-xl-left text-muted pl-5">
-      &copy; 2019 <a href="https://github.com/lucasfrag/Kali-Linux-Tools-Interface" class="font-weight-bold ml-1" target="_blank">Kali Linux Tools Interface</a>
+      &copy; 2024 <a href="https://github.com/hackinsdn/secflood" class="font-weight-bold ml-1" target="_blank">SecFlood by HackInSDN</a>
     </div>
   </div>
 </div>
