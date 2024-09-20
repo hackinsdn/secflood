@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon-->
-    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <link rel="icon" href="assets/img/favicon.ico">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
