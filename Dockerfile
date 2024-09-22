@@ -11,7 +11,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
  && echo "root:hackinsdn" | chpasswd \
  && sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/g' /etc/ssh/sshd_config \
  && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
- && cp -r /mnt/src /var/www/html/secfood \
+ && cp -r /mnt/src /var/www/html/secflood \
  && cp -vr /mnt/conf/* / \
  && install --mode 0755 --owner root /mnt/scripts/trex /usr/local/bin/ \
  && mkdir -p /var/lib/sqlite \
