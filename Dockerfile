@@ -1,7 +1,7 @@
 FROM debian:12
 
 RUN --mount=source=.,target=/mnt,type=bind \
- && export DEBIAN_FRONTEND=noninteractive \
+    export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get install --no-install-recommends -y apache2 libapache2-mod-php php-sqlite3 \
                                                sqlite3 git-core ssh sudo iproute2 tmux \
