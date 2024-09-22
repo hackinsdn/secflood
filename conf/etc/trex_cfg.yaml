@@ -1,0 +1,9 @@
+- port_limit      : 2
+  version         : 2
+  interfaces      : ["XXXINTF1XXX","XXXINTF2XXX"]
+  low_end         : true
+  port_info       :
+          - ip         : XXXIP1XXX
+            default_gw : XXXGW1XXX
+          - ip         : XXXIP2XXX
+            default_gw : XXXGW2XXX

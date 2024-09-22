@@ -1,0 +1,36 @@
+#!/bin/bash
+
+ORIG_ARGS=()
+DURATION="0"
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -t|--tunables)
+      TUNABLE_ARGS+=("$2=$3")
+      shift # past argument (-t)
+      shift # past arg_name
+      shift # past value
+      ;;
+    -d)
+      DURATION=$2
+      ORIG_ARGS+=("$1")
+      ORIG_ARGS+=("$2")
+      shift
+      shift
+      ;;
+    *)
+      ORIG_ARGS+=("$1")
+      shift # past argument
+      ;;
+  esac
+done
+
+TUNABLES=$(IFS=, ; echo "${TUNABLE_ARGS[*]}")
+test -n "$TUNABLES" && TUNABLES="-t $TUNABLES"
+
+# when duration is specified, give a few extra seconds for warm up
+test $DURATION -gt 0 && DURATION=$(($DURATION+5))
+
+set -- "${ORIG_ARGS[@]} $TUNABLES"
+
+cd /opt/trex/v3.05 && timeout -s INT --kill-after 3 $DURATION ./t-rex-64 $@

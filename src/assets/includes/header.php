@@ -9,7 +9,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" href="index.php">
-      <img src="assets/img/logo.png" class="navbar-brand-img">
+      <img src="assets/img/logo.png" class="navbar-brand-img" style="max-height: 100px;">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
