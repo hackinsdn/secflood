@@ -1,12 +1,16 @@
 #!/bin/bash
 
 # Wait for SecFlood Interfaces to become available and then update config
+echo "waiting for interfaces to become available..."
 until ip link show dev "$SECFLOOD_INTF1" >/dev/null 2>&1; do
 	sleep 2
 done
 until ip link show dev "$SECFLOOD_INTF2" >/dev/null 2>&1; do
 	sleep 2
 done
+
+set -x
+
 sed -i "s/XXXINTF1XXX/$SECFLOOD_INTF1/g" /etc/trex_cfg.yaml
 sed -i "s/XXXINTF2XXX/$SECFLOOD_INTF2/g" /etc/trex_cfg.yaml
 sed -i "s/XXXIP1XXX/$SECFLOOD_IP1/g" /etc/trex_cfg.yaml
@@ -28,4 +32,5 @@ chmod 700 /root/.ssh
 cp /var/lib/shellinabox/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 chown root:root /root/.ssh
 
+touch /var/log/syslog
 tail -f /var/log/syslog

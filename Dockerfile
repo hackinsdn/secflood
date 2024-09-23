@@ -6,7 +6,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
  && apt-get install --no-install-recommends -y apache2 libapache2-mod-php php-sqlite3 \
                                                sqlite3 git-core ssh sudo iproute2 tmux \
                                                vim python3-all pciutils binutils tcpdump \
-					       rsyslog iptables \
+                                               rsyslog iptables ssl-cert openssl ca-certificates \
                                                curl nmap hydra hping3 iperf3 d-itg \
  && echo "root:hackinsdn" | chpasswd \
  && sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/g' /etc/ssh/sshd_config \
@@ -25,10 +25,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
  && a2ensite secflood \
  && mv /etc/shellinabox/options-enabled/00+Black\ on\ White.css /etc/shellinabox/options-enabled/00_Black\ on\ White.css \
  && mv /etc/shellinabox/options-enabled/00_White\ On\ Black.css /etc/shellinabox/options-enabled/00+White\ On\ Black.css \
+ && install --mode 0755 --owner root /mnt/docker-entrypoint.sh /docker-entrypoint.sh \
  && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /
-
-COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
