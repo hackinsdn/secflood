@@ -13,6 +13,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
  && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
  && cp -r /mnt/src /var/www/html/secflood \
  && cp -vr /mnt/conf/* / \
+ && curl -L --insecure https://trex-tgn.cisco.com/trex/release/v3.05.tar.gz | tar -xz -C /opt/trex \
  && install --mode 0755 --owner root /mnt/scripts/trex /usr/local/bin/ \
  && mkdir -p /var/lib/sqlite \
  && sqlite3 /var/lib/sqlite/secflood.db < /var/www/html/secflood/assets/database.sql \
