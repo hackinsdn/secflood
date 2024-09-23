@@ -23,7 +23,7 @@ var dataPoints4 = <?php echo json_encode($dataPointsIni, JSON_NUMERIC_CHECK); ?>
 var chart = new CanvasJS.Chart("chartContainerBenign", {
   zoomEnabled: true,
   title: {
-    text: "Benign Network Traffic"
+    text: "Inside Interface Network Traffic"
   },
   axisX: {
     title: "chart updates every " + updateInterval / 1000 + " secs"
@@ -76,7 +76,7 @@ var chart = new CanvasJS.Chart("chartContainerBenign", {
 var chart2 = new CanvasJS.Chart("chartContainerMalicious", {
   zoomEnabled: true,
   title: {
-    text: "Malicious Network Traffic"
+    text: "Outside Interface Network Traffic"
   },
   axisX: {
     title: "chart updates every " + updateInterval / 1000 + " secs"
@@ -141,40 +141,42 @@ function toggleDataSeries(e) {
 }
 
 if(typeof(EventSource) !== "undefined") {
-  var stat_source = new EventSource("ifstat.php");
-  var rate_rec = 0;
-  var rate_snd = 0;
+  var stat_source = new EventSource("ifstat.php?interval=" + updateInterval);
+  var rate_rec1 = 0;
+  var rate_snd1 = 0;
+  var rate_rec2 = 0;
+  var rate_snd2 = 0;
   stat_source.onmessage = function(e)
   {
     var data = JSON.parse(e.data);
-    var new_rec = data.rec;
-    var new_snd = data.snd;
+    var new_rec1 = data.rec1;
+    var new_snd1 = data.snd1;
     var new_rec2 = data.rec2;
     var new_snd2 = data.snd2;
     var new_time = data.time;
   
     if ( typeof(old_time) != "undefined")
     { 
-      var bytes_rec = new_rec - old_rec;
-      var bytes_snd = new_snd - old_snd;
+      var bytes_rec1 = new_rec1 - old_rec1;
+      var bytes_snd1 = new_snd1 - old_snd1;
       var bytes_rec2 = new_rec2 - old_rec2;
       var bytes_snd2 = new_snd2 - old_snd2;
       var seconds = (new_time - old_time) / 1000;
   
-      rate_rec  = bytes_rec  * 8 / seconds;
-      rate_snd  = bytes_snd  * 8 / seconds;
+      rate_rec1 = bytes_rec1  * 8 / seconds;
+      rate_snd1 = bytes_snd1  * 8 / seconds;
       rate_rec2 = bytes_rec2 * 8 / seconds;
       rate_snd2 = bytes_snd2 * 8 / seconds;
   
       dataPoints1.shift();
       dataPoints1.push({
         x: new_time,
-        y: Math.round(rate_rec*100)/100
+        y: Math.round(rate_rec1*100)/100
       });
       dataPoints2.shift();
       dataPoints2.push({
         x: new_time,
-        y: Math.round(rate_snd*100)/100
+        y: Math.round(rate_snd1*100)/100
       });
       dataPoints3.shift();
       dataPoints3.push({
@@ -189,8 +191,8 @@ if(typeof(EventSource) !== "undefined") {
       chart.render();
       chart2.render();
     }
-    old_rec = new_rec;
-    old_snd = new_snd;
+    old_rec1 = new_rec1;
+    old_snd1 = new_snd1;
     old_rec2 = new_rec2;
     old_snd2 = new_snd2;
     old_time = new_time;
