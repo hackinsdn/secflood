@@ -23,3 +23,10 @@
 .filter-button {
 	margin: 2px;
 }
+
+.table-td-text-break td {
+	max-width: 80%;
+	white-space: normal !important;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}

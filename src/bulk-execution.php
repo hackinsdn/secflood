@@ -16,7 +16,7 @@
             <center><span>Bulk execution means you choose the tools/commands that will be executed by Attack Simulator and just <b>play them all together</b> here.</span><br><br></center>
             <p class="card-text">Current tasks: <span id="bulk-exec-status"></span></p><br/></br>
             <div class="table-responsive pb-3">
-              <table id='bulk-exec-table' class="table table-bordered table-striped">
+              <table id='bulk-exec-table' class="table table-bordered table-striped table-td-text-break">
                 <thead>
                   <tr class="bg-default">
                     <th><h5 style="color: white">Command</h5></th>
