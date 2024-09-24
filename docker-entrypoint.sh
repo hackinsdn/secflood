@@ -18,19 +18,19 @@ sed -i "s/XXXIP2XXX/$SECFLOOD_IP_OUTSIDE/g" /etc/trex_cfg.yaml
 sed -i "s/XXXGW1XXX/$SECFLOOD_GW_INSIDE/g" /etc/trex_cfg.yaml
 sed -i "s/XXXGW2XXX/$SECFLOOD_GW_OUTSIDE/g" /etc/trex_cfg.yaml
 
+# create ssh key
+su - shellinabox -s /bin/sh -c 'ssh-keygen -t rsa -N "" -f /var/lib/shellinabox/.ssh/id_rsa'
+mkdir -p /root/.ssh
+cp /var/lib/shellinabox/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+
+# force SSL cert to be recreated
+make-ssl-cert --force-overwrite generate-default-snakeoil
+
+# start services
 service ssh start
 service apache2 start
 service shellinabox start
 rsyslogd
-
-mkdir -p /var/lib/shellinabox/.ssh
-chmod 700 /var/lib/shellinabox/.ssh
-ssh-keygen -t rsa -N "" -C root@shellinabox -f /var/lib/shellinabox/.ssh/id_rsa
-chown -R shellinabox:shellinabox /var/lib/shellinabox/.ssh
-mkdir -p /root/.ssh
-chmod 700 /root/.ssh
-cp /var/lib/shellinabox/.ssh/id_rsa.pub /root/.ssh/authorized_keys
-chown root:root /root/.ssh
 
 touch /var/log/syslog
 tail -f /var/log/syslog
