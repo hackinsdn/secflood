@@ -8,6 +8,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
                                                vim python3-all pciutils binutils tcpdump \
                                                rsyslog iptables ssl-cert openssl ca-certificates \
                                                curl nmap hydra hping3 iperf3 d-itg \
+ && apt install -y /mnt/misc/shellinabox_2.21.1_amd64.deb \
  && echo "root:hackinsdn" | chpasswd \
  && sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/g' /etc/ssh/sshd_config \
  && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
@@ -18,7 +19,6 @@ RUN --mount=source=.,target=/mnt,type=bind \
  && mkdir -p /var/lib/sqlite \
  && sqlite3 /var/lib/sqlite/secflood.db < /var/www/html/secflood/assets/database.sql \
  && chown www-data /var/lib/sqlite/secflood.db \
- && apt install -y /mnt/misc/shellinabox_2.21.1_amd64.deb \
  && a2dissite 000-default \
  && a2enmod proxy_http \
  && a2enmod rewrite \
