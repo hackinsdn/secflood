@@ -28,9 +28,20 @@ done
 TUNABLES=$(IFS=, ; echo "${TUNABLE_ARGS[*]}")
 test -n "$TUNABLES" && TUNABLES="-t $TUNABLES"
 
+waitnstop() {
+	DUR=$1
+	sleep $DUR
+	PID=$(pgrep t-rex-64)
+	test -n "$PID" && kill -SIGINT $PID
+}
+
 # when duration is specified, give a few extra seconds for warm up
 test $DURATION -gt 0 && DURATION=$(($DURATION+5))
 
 set -- "${ORIG_ARGS[@]} $TUNABLES"
 
-cd /opt/trex/v3.05 && timeout -s INT --kill-after 3 $DURATION ./t-rex-64 $@
+waitnstop $DURATION &
+WAIT_PID=$!
+
+cd /opt/trex/v3.05 && ./t-rex-64 $@
+kill $WAIT_PID 2>/dev/null

@@ -59,7 +59,7 @@ if ($action == "list") {
 }
 
 if ($action == "stop") {
-  $cmd = 'bash -c "tmux ls 2>/dev/null | grep ^bulk-exe- | xargs -r -n 1 tmux kill-sess -t"';
+  $cmd = 'bash -c "tmux ls 2>/dev/null | grep ^bulk-exe- | cut -d: -f1 | xargs -r -n 1 tmux kill-sess -t"';
   $output = $ssh->exec("echo $password | sudo -S " . $cmd);
   if (empty($output)){
     echo "
