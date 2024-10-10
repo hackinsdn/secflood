@@ -4,7 +4,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
     export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get install --no-install-recommends -y apache2 libapache2-mod-php php-sqlite3 \
-                                               sqlite3 git-core ssh sudo iproute2 tmux \
+                                               sqlite3 git-core ssh sudo iproute2 net-tools tmux \
                                                vim python3-all pciutils binutils tcpdump \
                                                rsyslog iptables ssl-cert openssl ca-certificates \
                                                curl nmap hydra hping3 iperf3 d-itg \
