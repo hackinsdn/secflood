@@ -35,12 +35,32 @@ The easiest way of using SecFlood is through the Docker container:
 
 ```
 docker pull hackinsdn/secflood:latest
-docker run -d --name secflood --privileged -p 8443:443 hackinsdn/secflood:latest
+docker run -d --name secflood1 --privileged -e SECFLOOD_INTF_INSIDE=secflood1-eth0 -e SECFLOOD_GW_INSIDE=192.168.20.254 -e SECFLOOD_INTF_OUTSIDE=secflood1-eth1 -e SECFLOOD_GW_OUTSIDE=172.16.20.254 -p 8443:443 hackinsdn/secflood:latest
+```
+
+Note: the two environment variables defined above are used so that secflood can auto configure TRex for traffic generator:
+- SECFLOOD\_INTF\_INSIDE: will be used for inside traffic generator
+- SECFLOOD\_GW\_INSIDE: TRex need to know the destination MAC address to use on each port (in this case, inside port). You can specify this in two ways: Specify destination mac directly (not supported now on secflood) or specify the gatewat IP address and TRex will issue ARP request to this IP, and will use the result as dest MAC.
+- SECFLOOD\_INTF\_OUTSIDE: will be used for outside traffic generator
+- SECFLOOD\_GW\_OUTSIDE: same as for the inside port -- IP address of the gateway so that TRex will send ARP requests to know which mac address packets should be sent to on the outside interface.
+
+The other security tools like nmap, hydra, hping3, etc. will leverage those interfaces based on the routing table and networking configs you define.
+
+Example of manually defining those interfaces using VXLAN:
+```
+# assuming 10.0.1.2 will be the other side of the VXLAN tunnel for inside interface
+ip link add secflood1-eth0 type vxlan id 100 remote 10.0.1.2 dstport 8472
+ip link set up secflood1-eth0
+ip addr add 192.168.20.1/24 dev secflood1-eth0
+
+# assuming 10.0.2.2 will be ther other side of the VXLAN tunnel for outside interface
+ip link add secflood1-eth1 type vxlan id 101 remote 10.0.2.2 dstport 8472
+ip link set up secflood1-eth1
+ip addr add 172.16.20.1/24 dev secflood1-eth1
 ```
 
 Now you can point your browser to https://x.x.x.x:8443/ (replace x.x.x.x with your IP address, or 127.0.0.1 if running locally).
 
-TODO: document better the usage of the interfaces.
 
 
 # Credits

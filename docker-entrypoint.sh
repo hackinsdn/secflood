@@ -13,8 +13,6 @@ set -x
 
 sed -i "s/XXXINTF1XXX/$SECFLOOD_INTF_INSIDE/g" /etc/trex_cfg.yaml /var/www/html/secflood/ifstat.php
 sed -i "s/XXXINTF2XXX/$SECFLOOD_INTF_OUTSIDE/g" /etc/trex_cfg.yaml /var/www/html/secflood/ifstat.php
-sed -i "s/XXXIP1XXX/$SECFLOOD_IP_INSIDE/g" /etc/trex_cfg.yaml
-sed -i "s/XXXIP2XXX/$SECFLOOD_IP_OUTSIDE/g" /etc/trex_cfg.yaml
 sed -i "s/XXXGW1XXX/$SECFLOOD_GW_INSIDE/g" /etc/trex_cfg.yaml
 sed -i "s/XXXGW2XXX/$SECFLOOD_GW_OUTSIDE/g" /etc/trex_cfg.yaml
 
