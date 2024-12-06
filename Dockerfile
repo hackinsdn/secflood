@@ -7,7 +7,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
                                                sqlite3 git-core ssh sudo iproute2 net-tools iputils-ping tmux \
                                                vim python3-all pciutils binutils tcpdump \
                                                rsyslog iptables ssl-cert openssl ca-certificates \
-                                               curl nmap hydra hping3 iperf3 d-itg \
+                                               curl nmap hydra hping3 iperf3 d-itg socat \
  && apt install -y /mnt/misc/shellinabox_2.21.1_amd64.deb \
  && echo "root:hackinsdn" | chpasswd \
  && sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/g' /etc/ssh/sshd_config \
