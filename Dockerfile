@@ -8,17 +8,16 @@ RUN --mount=source=.,target=/mnt,type=bind \
                                                vim python3-all pciutils binutils tcpdump \
                                                rsyslog iptables ssl-cert openssl ca-certificates \
                                                curl nmap hydra hping3 iperf3 d-itg socat \
- && apt install -y /mnt/misc/shellinabox_2.21.1_amd64.deb
-
-RUN rm -rf /var/lib/apt/lists/*
+ && apt install -y /mnt/misc/shellinabox_2.21.1_amd64.deb \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN --mount=source=.,target=/mnt,type=bind \
-    cp -vr /mnt/conf/* / \
- && curl -L --insecure https://trex-tgn.cisco.com/trex/release/v3.05.tar.gz | tar -xz -C /opt/trex
-
-RUN echo "root:hackinsdn" | chpasswd \
+    echo "root:hackinsdn" | chpasswd \
  && sed -i 's/#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/g' /etc/ssh/sshd_config \
- && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
+ && sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config \
+ && cp -vr /mnt/conf/* /
+
+RUN curl -L --insecure https://trex-tgn.cisco.com/trex/release/v3.05.tar.gz | tar -xz -C /opt/trex
 
 RUN --mount=source=.,target=/mnt,type=bind \
     cp -r /mnt/src /var/www/html/secflood \
@@ -37,7 +36,6 @@ RUN a2dissite 000-default \
 RUN mv /etc/shellinabox/options-enabled/00+Black\ on\ White.css /etc/shellinabox/options-enabled/00_Black\ on\ White.css \
  && mv /etc/shellinabox/options-enabled/00_White\ On\ Black.css /etc/shellinabox/options-enabled/00+White\ On\ Black.css
 
-RUN --mount=source=.,target=/mnt,type=bind \
-    install --mode 0755 --owner root /mnt/docker-entrypoint.sh /docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
