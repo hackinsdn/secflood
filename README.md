@@ -72,8 +72,8 @@ SecFlood was originally based on [Kali-Linux-Tools-Interface](https://github.com
 
 [stable-badge]: https://img.shields.io/badge/stability-stable-green.svg
 [stable-link]: https://github.com/hackinsdn/secflood
-[ci-badge]: https://github.com/hackinsdn/secflood/actions/workflows/test.yml/badge.svg
-[ci-link]: https://github.com/hackinsdn/secflood/actions/workflows/test.yml
+[ci-badge]: https://github.com/hackinsdn/secflood/actions/workflows/docker-image.yml/badge.svg
+[ci-link]: https://github.com/hackinsdn/secflood/actions/workflows/docker-image.yml
 [tag-badge]: https://img.shields.io/github/tag/hackinsdn/secflood.svg
 [tag-link]: https://github.com/hackinsdn/secflood/tags
 [license-badge]: https://img.shields.io/github/license/hackinsdn/secflood.svg
