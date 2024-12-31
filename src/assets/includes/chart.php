@@ -23,7 +23,7 @@ var dataPoints4 = <?php echo json_encode($dataPointsIni, JSON_NUMERIC_CHECK); ?>
 var chart = new CanvasJS.Chart("chartContainerBenign", {
   zoomEnabled: true,
   title: {
-    text: "Inside Interface Network Traffic"
+    text: "Port 1 Network Traffic"
   },
   axisX: {
     title: "chart updates every " + updateInterval / 1000 + " secs"
@@ -76,7 +76,7 @@ var chart = new CanvasJS.Chart("chartContainerBenign", {
 var chart2 = new CanvasJS.Chart("chartContainerMalicious", {
   zoomEnabled: true,
   title: {
-    text: "Outside Interface Network Traffic"
+    text: "Port 2 Network Traffic"
   },
   axisX: {
     title: "chart updates every " + updateInterval / 1000 + " secs"
