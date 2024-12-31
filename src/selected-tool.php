@@ -131,10 +131,6 @@
                     <input id='target' type="text" placeholder="Example: 127.0.0.1" class="form-control is-valid" />
                   </div>
                 </div>
-                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#options"> + Options</button>
-                <button class="btn btn-default" type="button" onclick="execute();"><i class="ni ni-bold-right"></i> Execute</button>
-                <button class="btn btn-info" type="button" onclick="add_bulk_exec();"><i class="ni ni-archive-2"></i> Add for bulk exec later</button>
-                <br><br>
                 <div class="collapse options" id="options">
                   <h6 class="heading-small text-muted mb-4">Inputs</h6>
                   <!-- INPUTS LIST COMMANDS -->
@@ -258,6 +254,9 @@
                   </div>
 
                 </div>
+                <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#options"> + Options</button>
+                <button class="btn btn-default" type="button" onclick="execute();"><i class="ni ni-bold-right"></i> Execute</button>
+                <button class="btn btn-info" type="button" onclick="add_bulk_exec();"><i class="ni ni-archive-2"></i> Add for bulk exec later</button>
               </form>
               <?php include ("assets/includes/list-commands.php"); ?>  
             </div>
