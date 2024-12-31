@@ -314,10 +314,8 @@
     }
     var command = '<?php echo $cmd; ?>';
     function execute() {
-      $(".btn-default").click(function()  {
-        $(".options").collapse("hide");
-        $(".terminal").collapse("show");
-      });
+      $(".options").collapse("hide");
+      $(".terminal").collapse("show");
       document.getElementById("terminal-data").innerHTML = "Loading...";
       /* GET target */
       var target = document.getElementById('target').value;
