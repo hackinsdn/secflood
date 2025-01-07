@@ -97,7 +97,10 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 --
 
 INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
-(98, 'Packet count', 'Number of packages to send', 'hping3 --count 10', 18, 'input', '--count', '10', '10', NULL, 'COUNTER');
+(98, 'Packet count', 'Number of packages to send', 'hping3 --count 10', 18, 'input', '--count', '10', '10', NULL, 'COUNTER'),
+(99, 'Interval', 'Wait X microseconds', 'hping3 --interval u1000', 18, 'input', '--interval', NULL, 'u10000', NULL, 'TIMER'),
+(100, 'Debug', 'Debbuging info', 'hping3 --debug', 18, 'checkbox', '--debug', NULL, NULL, NULL, 'DEBUG'),
+(101, 'Data size', NULL, 'hping3 --data 100', 18, 'input', '--data', NULL, '0', NULL, 'SIZE');
 
 -- --------------------------------------------------------
 
