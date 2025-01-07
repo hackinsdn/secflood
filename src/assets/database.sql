@@ -97,10 +97,34 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 --
 
 INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
-(98, 'Packet count', 'Number of packages to send', 'hping3 --count 10', 18, 'input', '--count', '10', '10', NULL, 'COUNTER'),
+(98, 'Packet count', 'Number of packages to send', 'hping3 --count 100', 18, 'input', '--count', '100', '100', NULL, 'COUNTER'),
 (99, 'Interval', 'Wait X microseconds', 'hping3 --interval u1000', 18, 'input', '--interval', NULL, 'u10000', NULL, 'TIMER'),
 (100, 'Debug', 'Debbuging info', 'hping3 --debug', 18, 'checkbox', '--debug', NULL, NULL, NULL, 'DEBUG'),
-(101, 'Data size', NULL, 'hping3 --data 100', 18, 'input', '--data', NULL, '0', NULL, 'SIZE');
+(101, 'Data size', NULL, 'hping3 --data 100', 18, 'input', '--data', NULL, '0', NULL, 'SIZE'),
+(102, 'Verbose', 'Verbose mode', 'hping3 --verbose', 18, 'checkbox', '--verbose', NULL, NULL, NULL, 'DEBUG'),
+(103, 'Fast', '10 packets for second (alias for --interval u10000)', 'hping3 --fast', 18, 'checkbox', '--fast', NULL, NULL, NULL, 'FLOOD'),
+(104, 'Faster', '100 packets for second (alias for --interval u1000)', 'hping3 --faster', 18, 'checkbox', '--faster', NULL, NULL, NULL, 'FLOOD'),
+(105, 'Flood', 'Send packets as fast as possible', 'hping3 --flood', 18, 'checkbox', '--flood', NULL, NULL, NULL, 'FLOOD'),
+(106, 'Numeric output', 'No attempt will be made to lookup symbolic names for host addresses', 'hping3 --numeric', 18, 'checkbox', '--numeric', NULL, NULL, NULL, 'OUTPUT'),
+(107, 'Quiet output', 'Nothing is displayed except the summary lines at startup time and when finished', 'hping3 --quiet', 18, 'checkbox', '--quiet', NULL, NULL, NULL, 'OUTPUT'),
+(108, 'Mode', 'Default mode is TCP', 'hping3 --udp', 18, 'select', '#TCP Mode;--icmp #ICMP Mode; --udp #UDP Mode; --rawip #RawIP Mode; --scan #Scan Mode; --listen #Listen Mode', NULL, 'Yes', NULL, 'OUTPUT'),
+(109, 'Destination port', 'UDP or TCP mode only', 'hping3 --destport 53', 18, 'input', '--destport', NULL, '53', 'Yes', NULL),
+(110, 'Set do not fragment IP flag', 'IP mode only', 'hping3 --dontfrag', 18, 'checkbox', '--dontfrag', NULL, NULL, 'Yes', NULL),
+(111, 'Split packets in more frag', 'IP mode only', 'hping3 --frag', 18, 'checkbox', '--frag', NULL, NULL, 'Yes', NULL),
+(112, 'Spoof source address', 'IP mode only', 'hping3 --spoof IP_Addr', 18, 'input', '--spoof', NULL, '192.168.0.1', 'Yes', NULL),
+(113, 'Random source address', 'IP mode only', 'hping3 --rand-source', 18, 'checkbox', '--rand-source', NULL, NULL, 'Yes', NULL),
+(114, 'TTL', 'IP mode only', 'hping3 --ttl 64', 18, 'input', '--ttl', NULL, '64', 'Yes', NULL),
+(115, 'MTU', 'IP mode only', 'hping3 --mtu MTU_Value', 18, 'input', '--mtu', NULL, NULL, 'Yes', NULL),
+(116, 'ICMP Type', 'ICMP mode only', 'hping3 --icmptype ICMP_TYPE', 18, 'input', '--icmptype', NULL, '8', 'Yes', NULL),
+(117, 'ICMP Code', 'ICMP mode only', 'hping3 --icmpcode ICMP_CODE', 18, 'input', '--icmpcode', NULL, '0', 'Yes', NULL),
+(118, 'Source port', 'UDP or TCP mode only', 'hping3 --baseport 80', 18, 'input', '--baseport', NULL, '80', 'Yes', NULL),
+(119, 'Set TCP ACK flag', 'TCP mode only', 'hping3 --ack', 18, 'checkbox', '--ack', NULL, NULL, 'Yes', NULL),
+(120, 'Set TCP FIN flag', 'TCP mode only', 'hping3 --fin', 18, 'checkbox', '--fin', NULL, NULL, 'Yes', NULL),
+(121, 'Set TCP SYN flag', 'TCP mode only', 'hping3 --syn', 18, 'checkbox', '--syn', NULL, NULL, 'Yes', NULL),
+(122, 'Set TCP RST flag', 'TCP mode only', 'hping3 --rst', 18, 'checkbox', '--rst', NULL, NULL, 'Yes', NULL),
+(123, 'Set TCP PUSH flag', 'TCP mode only', 'hping3 --push', 18, 'checkbox', '--push', NULL, NULL, 'Yes', NULL),
+(124, 'Set TCP URG flag', 'TCP mode only', 'hping3 --urg', 18, 'checkbox', '--urg', NULL, NULL, 'Yes', NULL),
+(125, 'Set interface', NULL, 'hping3 --interface', 18, 'input', '--interface', NULL, 'eth0', 'Yes', NULL);
 
 -- --------------------------------------------------------
 
