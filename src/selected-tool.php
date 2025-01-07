@@ -137,7 +137,7 @@
                   <div class="col-xl-12">
                     <div class="row">
                       <?php
-                        $sql2 = $con->prepare("SELECT name, example, command FROM commands WHERE tool=$tool AND type='input' ORDER BY name");
+                        $sql2 = $con->prepare("SELECT name, example, command, value FROM commands WHERE tool=$tool AND type='input' ORDER BY name");
                         $sql2->execute();
                         $resultados2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
                         // FOREACH BEGINS
@@ -145,11 +145,12 @@
                           $name = $resultado2['name'];
                           $example = $resultado2['example'];
                           $command = $resultado2['command'];
+                          $value = $resultado2['value'];
                           echo "
                             <div class='col-md-12 col-lg-6 col-xl-4'>
                               <div class='form-group'>
                                 <label class='form-control-label' for='input-username'>$name</label>
-                                <input type='text' id='input-data' name='$command' class='form-control form-control-alternative' placeholder='$example'>
+                                <input type='text' id='input-data' name='$command' class='form-control form-control-alternative' placeholder='$example' value='$value'>
                               </div>
                             </div>
                           ";

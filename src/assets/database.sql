@@ -15,6 +15,7 @@ CREATE TABLE `commands` (
   `tool` int(11) DEFAULT NULL,
   `type` varchar(30) DEFAULT NULL,
   `command` text DEFAULT NULL,
+  `value` text DEFAULT NULL,
   `example` varchar(150) DEFAULT NULL,
   `sudo` int(1) DEFAULT NULL,
   `category` varchar(100) DEFAULT NULL
@@ -90,6 +91,13 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 (95, 'Duration', NULL, NULL, 16, 'input', '-d', NULL, NULL, NULL),
 (96, 'Source addresses (list separated by +)', NULL, NULL, 16, 'input', '-t source', 'Example: 203.0.113.0/24+198.51.100.0/24', NULL, NULL),
 (97, 'Destination addresses (list separated by +)', NULL, NULL, 16, 'input', '-t destination', 'Example: 192.0.2.0/24+198.18.0.0/15', NULL, NULL);
+
+--
+-- Populate data for `commands`: hping3
+--
+
+INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
+(98, 'Packet count', 'Number of packages to send', 'hping3 --count 10', 18, 'input', '--count', '10', '10', NULL, 'COUNTER');
 
 -- --------------------------------------------------------
 
