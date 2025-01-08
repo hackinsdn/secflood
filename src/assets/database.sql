@@ -28,125 +28,125 @@ CREATE TABLE `commands` (
 --
 -- Populate data for `commands`: nmap
 --
-INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
-(1, 'Scan specific ports', NULL, 'nmap -p 80,443 8.8.8.8', 1, 'input', '-p', 'Specific: 80,443 OR Range: 1-65536', NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
-(28, 'Ping Scan - disable port scan', NULL, NULL, 1, 'checkbox', '-sL', NULL, NULL, 'HOST DISCOVERY'),
-(29, 'Skip host discovery', NULL, NULL, 1, 'checkbox', '-Pn', NULL, NULL, 'HOST DISCOVERY'),
-(30, 'Trace hop path to each host', NULL, NULL, 1, 'checkbox', '--traceroute', NULL, NULL, 'HOST DISCOVERY'),
-(31, 'Use OSs DNS resolver', NULL, NULL, 1, 'checkbox', '--system-dns', NULL, NULL, 'HOST DISCOVERY'),
-(32, 'Exclude hosts/networks', NULL, NULL, 1, 'input', '--exclude', 'Example: 192.168.0.1', NULL, 'TARGET SPECIFICATION'),
-(33, 'Enable OS detection', NULL, NULL, 1, 'checkbox', '-O', NULL, NULL, 'OS DETECTION'),
-(34, 'IP protocol scan', NULL, NULL, 1, 'checkbox', '-sO', NULL, NULL, 'SCAN TECHNIQUES'),
-(35, 'FTP bounce scan', NULL, NULL, 1, 'checkbox', '-b', NULL, NULL, 'SCAN TECHNIQUES'),
-(36, 'Exclude the specified ports from scanning', NULL, NULL, 1, 'input', '--exclude-ports', 'Specific: 80,443 OR Range: 1-65536', NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
-(37, 'Scan 100 most common ports', NULL, NULL, 1, 'checkbox', '-F', NULL, NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
-(40, 'Service detection (Standard)', NULL, NULL, 1, 'checkbox', '-sV', NULL, NULL, 'SERVICE/VERSION DETECTION'),
-(42, 'OS detection, version, script scanning, and traceroute', NULL, NULL, 1, 'checkbox', '-A', NULL, NULL, 'MISC'),
-(43, 'Print version number', NULL, NULL, 1, 'show', '-V', NULL, NULL, 'MISC'),
-(44, 'Print this help summary page.', NULL, NULL, 1, 'show', '-h', NULL, NULL, 'MISC'),
-(45, 'Enable IPv6 scanning', NULL, NULL, 1, 'checkbox', '-6', NULL, NULL, 'MISC'),
-(47, 'Scan using UDP', NULL, NULL, 1, 'checkbox', '-sU', NULL, NULL, 'SCAN TECHNIQUES'),
-(48, 'Scan for vulnerabilities', NULL, NULL, 1, 'checkbox', '-sS -sC -Pn --script vuln', 'nmap -sS -sC -Pn --script vuln scanme.nmap.org ', NULL, NULL),
-(49, 'Scan for exploits', NULL, NULL, 1, 'checkbox', '-Pn -sS -sC --script exploit', 'nmap -Pn -sS -sC --script exploit scanme.nmap.org  ', NULL, NULL),
-(50, 'Scan to test DoS attack vulnerability', NULL, NULL, 1, 'checkbox', '-Pn -sS -sC --script dos', 'nmap -Pn -sS -sC --script dos scanme.nmap.org ', NULL, NULL),
-(52, 'Perform DoS attacks with a simulator', NULL, NULL, 1, 'checkbox', '--max-parallelism 750 -Pn --script http-slowloris --script-args http-slowloris.runforever=true', 'nmap --max-parallelism 750 -Pn --script http-slowloris --script-args http-slowloris.runforever=true scanme.nmap.org', NULL, NULL),
-(53, 'Find subdomains', NULL, NULL, 1, 'checkbox', '-p 80 --script dns-brute.nse', 'nmap -p 80 --script dns-brute.nse vulnweb.com', NULL, NULL),
-(54, 'Scan all 65535 ports', NULL, NULL, 1, 'checkbox', '-p-', NULL, NULL, NULL),
-(55, 'Scan using TCP connect', NULL, NULL, 1, 'checkbox', '-sT', NULL, NULL, 'SCAN TECHNIQUES'),
-(56, 'Scan common UDP ports', NULL, NULL, 1, 'checkbox', '-sU -p 53,123,138,161,162,68,69,500,4500,5600', NULL, NULL, NULL),
-(57, 'Service detection (Agressive)', NULL, NULL, 1, 'checkbox', '--version-intensity 5', NULL, NULL, 'SERVICE/VERSION DETECTION'),
-(58, 'Service detection (Lighter)', NULL, NULL, 1, 'checkbox', '-sV --version-intensity 0', NULL, NULL, 'SERVICE/VERSION DETECTION'),
-(59, 'Scan using default safe scripts', NULL, NULL, 1, 'checkbox', '-sV -sC', NULL, NULL, NULL),
-(60, 'Scan for UDP DDOS reflectors', NULL, NULL, 1, 'checkbox', '–sU –A –PN –n –pU:19,53,123,161 –script=ntp-monlist,dns-recursion,snmp-sysdescr', NULL, NULL, NULL),
-(61, 'Gather page titles from HTTP services', NULL, NULL, 1, 'checkbox', '--script=http-title', NULL, NULL, 'HTTP Service Information'),
-(62, 'Get HTTP headers of web services', NULL, NULL, 1, 'checkbox', '--script=http-headers', NULL, NULL, 'HTTP Service Information'),
-(63, 'Find web apps from known paths', NULL, NULL, 1, 'checkbox', '--script=http-enum', NULL, NULL, NULL),
-(64, 'Only show open (or possibly open) ports', NULL, NULL, 1, 'checkbox', '--open', NULL, NULL, NULL),
-(65, 'Show host interfaces and routes', NULL, NULL, 1, 'checkbox', '--iflist', NULL, NULL, NULL),
-(66, 'Scan using IP protocol ping', NULL, NULL, 1, 'checkbox', '-PO', NULL, NULL, NULL),
-(67, 'Scan using UDP ping', NULL, NULL, 1, 'checkbox', '-PU', NULL, NULL, NULL),
-(68, 'TCP Fin scan to check firewall', NULL, NULL, 1, 'checkbox', '-sF', NULL, NULL, 'Scan a firewall for security weakness'),
-(69, 'TCP Xmas scan to check firewall', NULL, NULL, 1, 'checkbox', '-sX', NULL, NULL, 'Scan a firewall for security weakness'),
-(70, 'TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness');
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
+('Scan specific ports', NULL, 'nmap -p 80,443 8.8.8.8', 1, 'input', '-p', 'Specific: 80,443 OR Range: 1-65536', NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
+('Ping Scan - disable port scan', NULL, NULL, 1, 'checkbox', '-sL', NULL, NULL, 'HOST DISCOVERY'),
+('Skip host discovery', NULL, NULL, 1, 'checkbox', '-Pn', NULL, NULL, 'HOST DISCOVERY'),
+('Trace hop path to each host', NULL, NULL, 1, 'checkbox', '--traceroute', NULL, NULL, 'HOST DISCOVERY'),
+('Use OSs DNS resolver', NULL, NULL, 1, 'checkbox', '--system-dns', NULL, NULL, 'HOST DISCOVERY'),
+('Exclude hosts/networks', NULL, NULL, 1, 'input', '--exclude', 'Example: 192.168.0.1', NULL, 'TARGET SPECIFICATION'),
+('Enable OS detection', NULL, NULL, 1, 'checkbox', '-O', NULL, NULL, 'OS DETECTION'),
+('IP protocol scan', NULL, NULL, 1, 'checkbox', '-sO', NULL, NULL, 'SCAN TECHNIQUES'),
+('FTP bounce scan', NULL, NULL, 1, 'checkbox', '-b', NULL, NULL, 'SCAN TECHNIQUES'),
+('Exclude the specified ports from scanning', NULL, NULL, 1, 'input', '--exclude-ports', 'Specific: 80,443 OR Range: 1-65536', NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
+('Scan 100 most common ports', NULL, NULL, 1, 'checkbox', '-F', NULL, NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
+('Service detection (Standard)', NULL, NULL, 1, 'checkbox', '-sV', NULL, NULL, 'SERVICE/VERSION DETECTION'),
+('OS detection, version, script scanning, and traceroute', NULL, NULL, 1, 'checkbox', '-A', NULL, NULL, 'MISC'),
+('Print version number', NULL, NULL, 1, 'show', '-V', NULL, NULL, 'MISC'),
+('Print this help summary page.', NULL, NULL, 1, 'show', '-h', NULL, NULL, 'MISC'),
+('Enable IPv6 scanning', NULL, NULL, 1, 'checkbox', '-6', NULL, NULL, 'MISC'),
+('Scan using UDP', NULL, NULL, 1, 'checkbox', '-sU', NULL, NULL, 'SCAN TECHNIQUES'),
+('Scan for vulnerabilities', NULL, NULL, 1, 'checkbox', '-sS -sC -Pn --script vuln', 'nmap -sS -sC -Pn --script vuln scanme.nmap.org ', NULL, NULL),
+('Scan for exploits', NULL, NULL, 1, 'checkbox', '-Pn -sS -sC --script exploit', 'nmap -Pn -sS -sC --script exploit scanme.nmap.org  ', NULL, NULL),
+('Scan to test DoS attack vulnerability', NULL, NULL, 1, 'checkbox', '-Pn -sS -sC --script dos', 'nmap -Pn -sS -sC --script dos scanme.nmap.org ', NULL, NULL),
+('Perform DoS attacks with a simulator', NULL, NULL, 1, 'checkbox', '--max-parallelism 750 -Pn --script http-slowloris --script-args http-slowloris.runforever=true', 'nmap --max-parallelism 750 -Pn --script http-slowloris --script-args http-slowloris.runforever=true scanme.nmap.org', NULL, NULL),
+('Find subdomains', NULL, NULL, 1, 'checkbox', '-p 80 --script dns-brute.nse', 'nmap -p 80 --script dns-brute.nse vulnweb.com', NULL, NULL),
+('Scan all 65535 ports', NULL, NULL, 1, 'checkbox', '-p-', NULL, NULL, NULL),
+('Scan using TCP connect', NULL, NULL, 1, 'checkbox', '-sT', NULL, NULL, 'SCAN TECHNIQUES'),
+('Scan common UDP ports', NULL, NULL, 1, 'checkbox', '-sU -p 53,123,138,161,162,68,69,500,4500,5600', NULL, NULL, NULL),
+('Service detection (Agressive)', NULL, NULL, 1, 'checkbox', '--version-intensity 5', NULL, NULL, 'SERVICE/VERSION DETECTION'),
+('Service detection (Lighter)', NULL, NULL, 1, 'checkbox', '-sV --version-intensity 0', NULL, NULL, 'SERVICE/VERSION DETECTION'),
+('Scan using default safe scripts', NULL, NULL, 1, 'checkbox', '-sV -sC', NULL, NULL, NULL),
+('Scan for UDP DDOS reflectors', NULL, NULL, 1, 'checkbox', '–sU –A –PN –n –pU:19,53,123,161 –script=ntp-monlist,dns-recursion,snmp-sysdescr', NULL, NULL, NULL),
+('Gather page titles from HTTP services', NULL, NULL, 1, 'checkbox', '--script=http-title', NULL, NULL, 'HTTP Service Information'),
+('Get HTTP headers of web services', NULL, NULL, 1, 'checkbox', '--script=http-headers', NULL, NULL, 'HTTP Service Information'),
+('Find web apps from known paths', NULL, NULL, 1, 'checkbox', '--script=http-enum', NULL, NULL, NULL),
+('Only show open (or possibly open) ports', NULL, NULL, 1, 'checkbox', '--open', NULL, NULL, NULL),
+('Show host interfaces and routes', NULL, NULL, 1, 'checkbox', '--iflist', NULL, NULL, NULL),
+('Scan using IP protocol ping', NULL, NULL, 1, 'checkbox', '-PO', NULL, NULL, NULL),
+('Scan using UDP ping', NULL, NULL, 1, 'checkbox', '-PU', NULL, NULL, NULL),
+('TCP Fin scan to check firewall', NULL, NULL, 1, 'checkbox', '-sF', NULL, NULL, 'Scan a firewall for security weakness'),
+('TCP Xmas scan to check firewall', NULL, NULL, 1, 'checkbox', '-sX', NULL, NULL, 'Scan a firewall for security weakness'),
+('TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness');
 
 --
 -- Populate data for `commands`: theHarvester
 --
-INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
-(71, 'Perform a DNS TLD expansion', NULL, NULL, 3, 'checkbox', '-t', NULL, NULL, NULL),
-(72, 'Perform a DNS brute force', NULL, NULL, 3, 'checkbox', '-c', NULL, NULL, NULL),
-(73, 'Perform a DNS reverse query', NULL, NULL, 3, 'checkbox', '-n', NULL, NULL, NULL),
-(74, 'Use this DNS server', NULL, NULL, 3, 'input', '-e', 'Set a DNS server', NULL, NULL),
-(75, 'Limit the number of results to work with', NULL, NULL, 3, 'input', '-l', 'Google goes from 100 to 100', NULL, NULL),
-(76, 'Start in result number', NULL, NULL, 3, 'input', '-s', 'Default 0', NULL, NULL),
-(77, 'Data source', NULL, NULL, 3, 'input', '-b', 'Ex.: google,bing,linkedin', NULL, NULL),
-(87, 'Verify host name and search for virtual hosts', NULL, NULL, 3, 'checkbox', '-v', NULL, NULL, NULL);
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
+('Perform a DNS TLD expansion', NULL, NULL, 3, 'checkbox', '-t', NULL, NULL, NULL),
+('Perform a DNS brute force', NULL, NULL, 3, 'checkbox', '-c', NULL, NULL, NULL),
+('Perform a DNS reverse query', NULL, NULL, 3, 'checkbox', '-n', NULL, NULL, NULL),
+('Use this DNS server', NULL, NULL, 3, 'input', '-e', 'Set a DNS server', NULL, NULL),
+('Limit the number of results to work with', NULL, NULL, 3, 'input', '-l', 'Google goes from 100 to 100', NULL, NULL),
+('Start in result number', NULL, NULL, 3, 'input', '-s', 'Default 0', NULL, NULL),
+('Data source', NULL, NULL, 3, 'input', '-b', 'Ex.: google,bing,linkedin', NULL, NULL),
+('Verify host name and search for virtual hosts', NULL, NULL, 3, 'checkbox', '-v', NULL, NULL, NULL);
 
 --
 -- Populate data for `commands`: dnstracer
 --
-INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
-(78, 'Use this source address', NULL, NULL, 8, 'input', '-S', NULL, NULL, NULL),
-(79, 'Limit time to wait per try', NULL, NULL, 8, 'input', '-t', NULL, NULL, NULL),
-(80, 'Don''t query IPv6 servers', NULL, NULL, 8, 'checkbox', '-4', NULL, NULL, NULL),
-(81, 'Show all details and informations', NULL, NULL, 8, 'checkbox', '-v', NULL, NULL, NULL),
-(82, 'Retry limit', NULL, NULL, 8, 'input', '-r', 'Ex: 1', NULL, NULL),
-(83, 'Specific the register type', NULL, NULL, 8, 'input', '-q', 'Ex: A, AAA, MX, NS, TXT', NULL, NULL),
-(84, 'Enable overview of received answers', NULL, NULL, 8, 'checkbox', '-o', NULL, NULL, NULL),
-(85, 'Enable negative cache', NULL, NULL, 8, 'checkbox', '-C', NULL, NULL, NULL),
-(86, 'Disable local caching', NULL, NULL, 8, 'checkbox', '-c', NULL, NULL, NULL);
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
+('Use this source address', NULL, NULL, 8, 'input', '-S', NULL, NULL, NULL),
+('Limit time to wait per try', NULL, NULL, 8, 'input', '-t', NULL, NULL, NULL),
+('Don''t query IPv6 servers', NULL, NULL, 8, 'checkbox', '-4', NULL, NULL, NULL),
+('Show all details and informations', NULL, NULL, 8, 'checkbox', '-v', NULL, NULL, NULL),
+('Retry limit', NULL, NULL, 8, 'input', '-r', 'Ex: 1', NULL, NULL),
+('Specific the register type', NULL, NULL, 8, 'input', '-q', 'Ex: A, AAA, MX, NS, TXT', NULL, NULL),
+('Enable overview of received answers', NULL, NULL, 8, 'checkbox', '-o', NULL, NULL, NULL),
+('Enable negative cache', NULL, NULL, 8, 'checkbox', '-C', NULL, NULL, NULL),
+('Disable local caching', NULL, NULL, 8, 'checkbox', '-c', NULL, NULL, NULL);
 
 --
 -- Populate data for `commands`: dnstracer
 --
-INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
-(88, 'Search', NULL, NULL, 15, 'input', 'search', 'To use this, clean target''s field.', NULL, NULL),
-(90, 'Search emails with the local-part', NULL, NULL, 15, 'checkbox', '--local-part', NULL, NULL, NULL),
-(91, 'Search emails with the password', NULL, NULL, 15, 'checkbox', '--password', NULL, NULL, NULL),
-(92, 'Search emails with the domain', NULL, NULL, 15, 'checkbox', '--domain', NULL, NULL, NULL);
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
+('Search', NULL, NULL, 15, 'input', 'search', 'To use this, clean target''s field.', NULL, NULL),
+('Search emails with the local-part', NULL, NULL, 15, 'checkbox', '--local-part', NULL, NULL, NULL),
+('Search emails with the password', NULL, NULL, 15, 'checkbox', '--password', NULL, NULL, NULL),
+('Search emails with the domain', NULL, NULL, 15, 'checkbox', '--domain', NULL, NULL, NULL);
 
 --
 -- Populate data for `commands`: dnstracer
 --
-INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
-(93, 'Traffic profile', NULL, NULL, 16, 'select', '-f astf/sfr_full_hackinsdn.py --astf#EMIX - Enterprise MIX traffic (customized by HackInSDN);-f cap2/dns.yaml#Simple DNS traffic;-f cap2/http_simple.yaml#Simple HTTP traffic;-f cap2/imix_hackinsdn_64_594_1518.yaml#IMIX - Internet MIX traffic (customized by HackInSDN)', NULL, NULL, NULL),
-(94, 'Multiplier', NULL, NULL, 16, 'input', '-m', NULL, NULL, NULL),
-(95, 'Duration', NULL, NULL, 16, 'input', '-d', NULL, NULL, NULL),
-(96, 'Source addresses (list separated by +)', NULL, NULL, 16, 'input', '-t source', 'Example: 203.0.113.0/24+198.51.100.0/24', NULL, NULL),
-(97, 'Destination addresses (list separated by +)', NULL, NULL, 16, 'input', '-t destination', 'Example: 192.0.2.0/24+198.18.0.0/15', NULL, NULL);
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
+('Traffic profile', NULL, NULL, 16, 'select', '-f astf/sfr_full_hackinsdn.py --astf#EMIX - Enterprise MIX traffic (customized by HackInSDN);-f cap2/dns.yaml#Simple DNS traffic;-f cap2/http_simple.yaml#Simple HTTP traffic;-f cap2/imix_hackinsdn_64_594_1518.yaml#IMIX - Internet MIX traffic (customized by HackInSDN)', NULL, NULL, NULL),
+('Multiplier', NULL, NULL, 16, 'input', '-m', NULL, NULL, NULL),
+('Duration', NULL, NULL, 16, 'input', '-d', NULL, NULL, NULL),
+('Source addresses (list separated by +)', NULL, NULL, 16, 'input', '-t source', 'Example: 203.0.113.0/24+198.51.100.0/24', NULL, NULL),
+('Destination addresses (list separated by +)', NULL, NULL, 16, 'input', '-t destination', 'Example: 192.0.2.0/24+198.18.0.0/15', NULL, NULL);
 
 --
 -- Populate data for `commands`: hping3
 --
-INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
-(98, 'Packet count', 'Number of packages to send', 'hping3 --count 100', 18, 'input', '--count', '100', '100', NULL, 'COUNTER'),
-(99, 'Interval', 'Wait X microseconds', 'hping3 --interval u1000', 18, 'input', '--interval', NULL, 'u10000', NULL, 'TIMER'),
-(100, 'Debug', 'Debbuging info', 'hping3 --debug', 18, 'checkbox', '--debug', NULL, NULL, NULL, 'DEBUG'),
-(101, 'Data size', NULL, 'hping3 --data 100', 18, 'input', '--data', NULL, '0', NULL, 'SIZE'),
-(102, 'Verbose', 'Verbose mode', 'hping3 --verbose', 18, 'checkbox', '--verbose', NULL, NULL, NULL, 'DEBUG'),
-(103, 'Fast', '10 packets for second (alias for --interval u10000)', 'hping3 --fast', 18, 'checkbox', '--fast', NULL, NULL, NULL, 'FLOOD'),
-(104, 'Faster', '100 packets for second (alias for --interval u1000)', 'hping3 --faster', 18, 'checkbox', '--faster', NULL, NULL, NULL, 'FLOOD'),
-(105, 'Flood', 'Send packets as fast as possible', 'hping3 --flood', 18, 'checkbox', '--flood', NULL, NULL, NULL, 'FLOOD'),
-(106, 'Numeric output', 'No attempt will be made to lookup symbolic names for host addresses', 'hping3 --numeric', 18, 'checkbox', '--numeric', NULL, NULL, NULL, 'OUTPUT'),
-(107, 'Quiet output', 'Nothing is displayed except the summary lines at startup time and when finished', 'hping3 --quiet', 18, 'checkbox', '--quiet', NULL, NULL, NULL, 'OUTPUT'),
-(108, 'Mode', 'Default mode is TCP', 'hping3 --udp', 18, 'select', '#TCP Mode;--icmp #ICMP Mode; --udp #UDP Mode; --rawip #RawIP Mode; --scan #Scan Mode; --listen #Listen Mode', NULL, 'Yes', NULL, 'OUTPUT'),
-(109, 'Destination port', 'UDP or TCP mode only', 'hping3 --destport 53', 18, 'input', '--destport', NULL, '53', 'Yes', NULL),
-(110, 'Set do not fragment IP flag', 'IP mode only', 'hping3 --dontfrag', 18, 'checkbox', '--dontfrag', NULL, NULL, 'Yes', NULL),
-(111, 'Split packets in more frag', 'IP mode only', 'hping3 --frag', 18, 'checkbox', '--frag', NULL, NULL, 'Yes', NULL),
-(112, 'Spoof source address', 'IP mode only', 'hping3 --spoof IP_Addr', 18, 'input', '--spoof', NULL, '192.168.0.1', 'Yes', NULL),
-(113, 'Random source address', 'IP mode only', 'hping3 --rand-source', 18, 'checkbox', '--rand-source', NULL, NULL, 'Yes', NULL),
-(114, 'TTL', 'IP mode only', 'hping3 --ttl 64', 18, 'input', '--ttl', NULL, '64', 'Yes', NULL),
-(115, 'MTU', 'IP mode only', 'hping3 --mtu MTU_Value', 18, 'input', '--mtu', NULL, NULL, 'Yes', NULL),
-(116, 'ICMP Type', 'ICMP mode only', 'hping3 --icmptype ICMP_TYPE', 18, 'input', '--icmptype', NULL, '8', 'Yes', NULL),
-(117, 'ICMP Code', 'ICMP mode only', 'hping3 --icmpcode ICMP_CODE', 18, 'input', '--icmpcode', NULL, '0', 'Yes', NULL),
-(118, 'Source port', 'UDP or TCP mode only', 'hping3 --baseport 80', 18, 'input', '--baseport', NULL, '80', 'Yes', NULL),
-(119, 'Set TCP ACK flag', 'TCP mode only', 'hping3 --ack', 18, 'checkbox', '--ack', NULL, NULL, 'Yes', NULL),
-(120, 'Set TCP FIN flag', 'TCP mode only', 'hping3 --fin', 18, 'checkbox', '--fin', NULL, NULL, 'Yes', NULL),
-(121, 'Set TCP SYN flag', 'TCP mode only', 'hping3 --syn', 18, 'checkbox', '--syn', NULL, NULL, 'Yes', NULL),
-(122, 'Set TCP RST flag', 'TCP mode only', 'hping3 --rst', 18, 'checkbox', '--rst', NULL, NULL, 'Yes', NULL),
-(123, 'Set TCP PUSH flag', 'TCP mode only', 'hping3 --push', 18, 'checkbox', '--push', NULL, NULL, 'Yes', NULL),
-(124, 'Set TCP URG flag', 'TCP mode only', 'hping3 --urg', 18, 'checkbox', '--urg', NULL, NULL, 'Yes', NULL),
-(125, 'Set interface', NULL, 'hping3 --interface', 18, 'input', '--interface', NULL, 'eth0', 'Yes', NULL);
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
+('Packet count', 'Number of packages to send', 'hping3 --count 100', 18, 'input', '--count', '100', '100', NULL, 'COUNTER'),
+('Interval', 'Wait X microseconds', 'hping3 --interval u1000', 18, 'input', '--interval', NULL, 'u10000', NULL, 'TIMER'),
+('Debug', 'Debbuging info', 'hping3 --debug', 18, 'checkbox', '--debug', NULL, NULL, NULL, 'DEBUG'),
+('Data size', NULL, 'hping3 --data 100', 18, 'input', '--data', NULL, '0', NULL, 'SIZE'),
+('Verbose', 'Verbose mode', 'hping3 --verbose', 18, 'checkbox', '--verbose', NULL, NULL, NULL, 'DEBUG'),
+('Fast', '10 packets for second (alias for --interval u10000)', 'hping3 --fast', 18, 'checkbox', '--fast', NULL, NULL, NULL, 'FLOOD'),
+('Faster', '100 packets for second (alias for --interval u1000)', 'hping3 --faster', 18, 'checkbox', '--faster', NULL, NULL, NULL, 'FLOOD'),
+('Flood', 'Send packets as fast as possible', 'hping3 --flood', 18, 'checkbox', '--flood', NULL, NULL, NULL, 'FLOOD'),
+('Numeric output', 'No attempt will be made to lookup symbolic names for host addresses', 'hping3 --numeric', 18, 'checkbox', '--numeric', NULL, NULL, NULL, 'OUTPUT'),
+('Quiet output', 'Nothing is displayed except the summary lines at startup time and when finished', 'hping3 --quiet', 18, 'checkbox', '--quiet', NULL, NULL, NULL, 'OUTPUT'),
+('Mode', 'Default mode is TCP', 'hping3 --udp', 18, 'select', '#TCP Mode;--icmp #ICMP Mode; --udp #UDP Mode; --rawip #RawIP Mode; --scan #Scan Mode; --listen #Listen Mode', NULL, 'Yes', NULL, 'OUTPUT'),
+('Destination port', 'UDP or TCP mode only', 'hping3 --destport 53', 18, 'input', '--destport', NULL, '53', 'Yes', NULL),
+('Set do not fragment IP flag', 'IP mode only', 'hping3 --dontfrag', 18, 'checkbox', '--dontfrag', NULL, NULL, 'Yes', NULL),
+('Split packets in more frag', 'IP mode only', 'hping3 --frag', 18, 'checkbox', '--frag', NULL, NULL, 'Yes', NULL),
+('Spoof source address', 'IP mode only', 'hping3 --spoof IP_Addr', 18, 'input', '--spoof', NULL, '192.168.0.1', 'Yes', NULL),
+('Random source address', 'IP mode only', 'hping3 --rand-source', 18, 'checkbox', '--rand-source', NULL, NULL, 'Yes', NULL),
+('TTL', 'IP mode only', 'hping3 --ttl 64', 18, 'input', '--ttl', NULL, '64', 'Yes', NULL),
+('MTU', 'IP mode only', 'hping3 --mtu MTU_Value', 18, 'input', '--mtu', NULL, NULL, 'Yes', NULL),
+('ICMP Type', 'ICMP mode only', 'hping3 --icmptype ICMP_TYPE', 18, 'input', '--icmptype', NULL, '8', 'Yes', NULL),
+('ICMP Code', 'ICMP mode only', 'hping3 --icmpcode ICMP_CODE', 18, 'input', '--icmpcode', NULL, '0', 'Yes', NULL),
+('Source port', 'UDP or TCP mode only', 'hping3 --baseport 80', 18, 'input', '--baseport', NULL, '80', 'Yes', NULL),
+('Set TCP ACK flag', 'TCP mode only', 'hping3 --ack', 18, 'checkbox', '--ack', NULL, NULL, 'Yes', NULL),
+('Set TCP FIN flag', 'TCP mode only', 'hping3 --fin', 18, 'checkbox', '--fin', NULL, NULL, 'Yes', NULL),
+('Set TCP SYN flag', 'TCP mode only', 'hping3 --syn', 18, 'checkbox', '--syn', NULL, NULL, 'Yes', NULL),
+('Set TCP RST flag', 'TCP mode only', 'hping3 --rst', 18, 'checkbox', '--rst', NULL, NULL, 'Yes', NULL),
+('Set TCP PUSH flag', 'TCP mode only', 'hping3 --push', 18, 'checkbox', '--push', NULL, NULL, 'Yes', NULL),
+('Set TCP URG flag', 'TCP mode only', 'hping3 --urg', 18, 'checkbox', '--urg', NULL, NULL, 'Yes', NULL),
+('Set interface', NULL, 'hping3 --interface', 18, 'input', '--interface', NULL, 'eth0', 'Yes', NULL);
 
 -- --------------------------------------------------------
 
