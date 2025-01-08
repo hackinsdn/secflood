@@ -25,6 +25,9 @@ CREATE TABLE `commands` (
 -- Populate data for `commands`
 --
 
+--
+-- Populate data for `commands`: nmap
+--
 INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
 (1, 'Scan specific ports', NULL, 'nmap -p 80,443 8.8.8.8', 1, 'input', '-p', 'Specific: 80,443 OR Range: 1-65536', NULL, 'PORT SPECIFICATION AND SCAN ORDER'),
 (28, 'Ping Scan - disable port scan', NULL, NULL, 1, 'checkbox', '-sL', NULL, NULL, 'HOST DISCOVERY'),
@@ -64,7 +67,12 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 (67, 'Scan using UDP ping', NULL, NULL, 1, 'checkbox', '-PU', NULL, NULL, NULL),
 (68, 'TCP Fin scan to check firewall', NULL, NULL, 1, 'checkbox', '-sF', NULL, NULL, 'Scan a firewall for security weakness'),
 (69, 'TCP Xmas scan to check firewall', NULL, NULL, 1, 'checkbox', '-sX', NULL, NULL, 'Scan a firewall for security weakness'),
-(70, 'TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness'),
+(70, 'TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness');
+
+--
+-- Populate data for `commands`: theHarvester
+--
+INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
 (71, 'Perform a DNS TLD expansion', NULL, NULL, 3, 'checkbox', '-t', NULL, NULL, NULL),
 (72, 'Perform a DNS brute force', NULL, NULL, 3, 'checkbox', '-c', NULL, NULL, NULL),
 (73, 'Perform a DNS reverse query', NULL, NULL, 3, 'checkbox', '-n', NULL, NULL, NULL),
@@ -72,6 +80,12 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 (75, 'Limit the number of results to work with', NULL, NULL, 3, 'input', '-l', 'Google goes from 100 to 100', NULL, NULL),
 (76, 'Start in result number', NULL, NULL, 3, 'input', '-s', 'Default 0', NULL, NULL),
 (77, 'Data source', NULL, NULL, 3, 'input', '-b', 'Ex.: google,bing,linkedin', NULL, NULL),
+(87, 'Verify host name and search for virtual hosts', NULL, NULL, 3, 'checkbox', '-v', NULL, NULL, NULL);
+
+--
+-- Populate data for `commands`: dnstracer
+--
+INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
 (78, 'Use this source address', NULL, NULL, 8, 'input', '-S', NULL, NULL, NULL),
 (79, 'Limit time to wait per try', NULL, NULL, 8, 'input', '-t', NULL, NULL, NULL),
 (80, 'Don''t query IPv6 servers', NULL, NULL, 8, 'checkbox', '-4', NULL, NULL, NULL),
@@ -80,12 +94,21 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 (83, 'Specific the register type', NULL, NULL, 8, 'input', '-q', 'Ex: A, AAA, MX, NS, TXT', NULL, NULL),
 (84, 'Enable overview of received answers', NULL, NULL, 8, 'checkbox', '-o', NULL, NULL, NULL),
 (85, 'Enable negative cache', NULL, NULL, 8, 'checkbox', '-C', NULL, NULL, NULL),
-(86, 'Disable local caching', NULL, NULL, 8, 'checkbox', '-c', NULL, NULL, NULL),
-(87, 'Verify host name and search for virtual hosts', NULL, NULL, 3, 'checkbox', '-v', NULL, NULL, NULL),
+(86, 'Disable local caching', NULL, NULL, 8, 'checkbox', '-c', NULL, NULL, NULL);
+
+--
+-- Populate data for `commands`: dnstracer
+--
+INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
 (88, 'Search', NULL, NULL, 15, 'input', 'search', 'To use this, clean target''s field.', NULL, NULL),
 (90, 'Search emails with the local-part', NULL, NULL, 15, 'checkbox', '--local-part', NULL, NULL, NULL),
 (91, 'Search emails with the password', NULL, NULL, 15, 'checkbox', '--password', NULL, NULL, NULL),
-(92, 'Search emails with the domain', NULL, NULL, 15, 'checkbox', '--domain', NULL, NULL, NULL),
+(92, 'Search emails with the domain', NULL, NULL, 15, 'checkbox', '--domain', NULL, NULL, NULL);
+
+--
+-- Populate data for `commands`: dnstracer
+--
+INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES
 (93, 'Traffic profile', NULL, NULL, 16, 'select', '-f astf/sfr_full_hackinsdn.py --astf#EMIX - Enterprise MIX traffic (customized by HackInSDN);-f cap2/dns.yaml#Simple DNS traffic;-f cap2/http_simple.yaml#Simple HTTP traffic;-f cap2/imix_hackinsdn_64_594_1518.yaml#IMIX - Internet MIX traffic (customized by HackInSDN)', NULL, NULL, NULL),
 (94, 'Multiplier', NULL, NULL, 16, 'input', '-m', NULL, NULL, NULL),
 (95, 'Duration', NULL, NULL, 16, 'input', '-d', NULL, NULL, NULL),
@@ -95,7 +118,6 @@ INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`,
 --
 -- Populate data for `commands`: hping3
 --
-
 INSERT INTO `commands` (`id`, `name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
 (98, 'Packet count', 'Number of packages to send', 'hping3 --count 100', 18, 'input', '--count', '100', '100', NULL, 'COUNTER'),
 (99, 'Interval', 'Wait X microseconds', 'hping3 --interval u1000', 18, 'input', '--interval', NULL, 'u10000', NULL, 'TIMER'),
