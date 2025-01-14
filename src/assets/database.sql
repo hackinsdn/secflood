@@ -68,7 +68,7 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('TCP Fin scan to check firewall', NULL, NULL, 1, 'checkbox', '-sF', NULL, NULL, 'Scan a firewall for security weakness'),
 ('TCP Xmas scan to check firewall', NULL, NULL, 1, 'checkbox', '-sX', NULL, NULL, 'Scan a firewall for security weakness'),
 ('TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness'),
-('Interfaces', NULL, NULL, 1, 'input', '-e', NULL, 'eth0', 'INTERFACE');
+('Interfaces', NULL, NULL, 1, 'input', '-e', 'eth0', NULL, 'INTERFACE'),
 
 --
 -- Populate data for `commands`: theHarvester
