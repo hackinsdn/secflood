@@ -149,6 +149,16 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Set TCP URG flag', 'TCP mode only', 'hping3 --urg', 18, 'checkbox', '--urg', NULL, NULL, 'Yes', NULL),
 ('Set interface', NULL, 'hping3 --interface', 18, 'input', '--interface', NULL, 'eth0', 'Yes', NULL);
 
+--
+-- Populate data for `commands`: slowloris
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`, `category`) VALUES
+('Port', 'Port of webserver, usually 80', NULL, 21, 'input', '--port', NULL, '80', NULL, NULL),
+('Sockets', 'Number of sockets to use in the test', NULL, 21, 'input', '--sockets', NULL, '4', NULL, NULL),
+('Verbose', 'Increases logging', NULL, 21, 'checkbox', '--verbose', NULL, NULL, NULL, NULL),
+('User-agents', 'Randomizes user-agents with each request', NULL, 21, 'checkbox', '--randuseragents', NULL, NULL, NULL, NULL),
+('HTTPS', 'Use HTTPS for the requests', NULL, 21, 'checkbox', '--https', NULL, NULL, NULL, NULL),
+('Sleep time', 'Time to sleep between each header sent', NULL, 21, 'input', '--sleeptime', NULL, '5', NULL, NULL);
 -- --------------------------------------------------------
 
 --
@@ -220,7 +230,8 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 (17, 'httperf', 'httperf', 'benign application-level', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', NULL, NULL, 'httperf', NULL, NULL, 'Benign', 'Application level', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (18, 'hping3', 'hping3', 'benign throughput', 'http://www.hping.org', 'https://www.kali.org/tools/hping3/', NULL, 'Yes', 'assets/img/hping.svg', 'hping3', NULL, NULL, 'Benign', 'Throughput', '<b>hping</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (19, 'iperf3', 'iperf3', 'benign throughput', 'https://iperf.fr', 'https://iperf.fr', 'https://github.com/esnet/iperf', NULL, NULL, 'iperf3', NULL, NULL, 'Benign', 'Throughput', '<b>iperf3</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
-(20, 'd-itg', 'd-itg', 'benign model-based', 'https://traffic.comics.unina.it/software/ITG/', 'https://sources.debian.org/src/d-itg/', NULL, NULL, NULL, 'd-itg', NULL, NULL, 'Benign', 'Model-based', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>');
+(20, 'd-itg', 'd-itg', 'benign model-based', 'https://traffic.comics.unina.it/software/ITG/', 'https://sources.debian.org/src/d-itg/', NULL, NULL, NULL, 'd-itg', NULL, NULL, 'Benign', 'Model-based', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
+(21, 'slowloris', 'slowloris', 'denial-of-service', 'Low bandwidth DoS tool', 'https://github.com/gkbrk/slowloris', 'https://github.com/gkbrk/slowloris', 'Yes', NULL, 'slowloris', NULL, NULL, 'Denial of Service', NULL, NULL);
 
 
 COMMIT;
