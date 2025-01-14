@@ -69,6 +69,11 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('TCP Xmas scan to check firewall', NULL, NULL, 1, 'checkbox', '-sX', NULL, NULL, 'Scan a firewall for security weakness'),
 ('TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness'),
 ('Interfaces', NULL, NULL, 1, 'input', '-e', 'eth0', NULL, 'INTERFACE'),
+('Timing template', 'Set timing template (higher is faster)', NULL, 1, 'input', '-T', '1-5', NULL, 'TIMING'),
+('Host timeout', 'Give up on target after this long', NULL, 1, 'input', '--host-timeout', NULL, NULL, 'TIMING'),
+('Scan delay', 'Adjust delay between probes', NULL, 1, 'input', '--scan-delay', NULL, NULL, 'TIMING'),
+('Min rate', 'Send packets no slower than <number> per second', NULL, 1, 'input', '--min-rate', '10', NULL, 'TIMING'),
+('Max rate', 'Send packets no faster than <number> per second', NULL, 1, 'input', '--max-rate', '100', NULL, 'TIMING');
 
 --
 -- Populate data for `commands`: theHarvester
