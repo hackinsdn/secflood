@@ -73,7 +73,10 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Host timeout', 'Give up on target after this long', NULL, 1, 'input', '--host-timeout', NULL, NULL, 'TIMING'),
 ('Scan delay', 'Adjust delay between probes', NULL, 1, 'input', '--scan-delay', NULL, NULL, 'TIMING'),
 ('Min rate', 'Send packets no slower than <number> per second', NULL, 1, 'input', '--min-rate', '10', NULL, 'TIMING'),
-('Max rate', 'Send packets no faster than <number> per second', NULL, 1, 'input', '--max-rate', '100', NULL, 'TIMING');
+('Max rate', 'Send packets no faster than <number> per second', NULL, 1, 'input', '--max-rate', '100', NULL, 'TIMING'),
+('Script', 'Comma separated list of directories, script-files or script-categories', NULL, 1, 'input', '--script', 'default', NULL, 'SCRIPTING'),
+('Script args', 'Provide arguments to scripts', NULL, 1, 'input', '--script-args', NULL, NULL, 'SCRIPTING'),
+('Script trace', 'Show all data sent and received', NULL, 1, 'checkbox', '--script-trace', NULL, NULL, 'SCRIPTING');
 
 --
 -- Populate data for `commands`: theHarvester
