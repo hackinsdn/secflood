@@ -149,6 +149,25 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Set TCP URG flag', 'TCP mode only', 'hping3 --urg', 18, 'checkbox', '--urg', NULL, NULL, 'Yes', NULL),
 ('Set interface', NULL, 'hping3 --interface', 18, 'input', '--interface', NULL, 'eth0', 'Yes', NULL);
 
+--
+-- Populate data for `commands`: ping
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`) VALUES
+('IPv4', 'Use IPv4 only', 'ping -4', 22, 'checkbox', '-4', NULL, NULL, NULL),
+('IPv6', 'Use IPv6 only', 'ping -6', 22, 'checkbox', '-6', NULL, NULL, NULL),
+('Count', 'Stop after sending count ECHO_REQUEST packets', 'ping -c 4', 22, 'input', '-c', '4', '4', NULL),
+('Print timestamp', 'Print timestamp (unix time + microseconds as in gettimeofday) before each line', 'ping -D', 22, 'checkbox', '-D', NULL, NULL, NULL),
+('Interval', 'Wait interval seconds between sending each packet', 'ping -i 5', 22, 'input', '-i', NULL, '5', NULL),
+('Interface', 'interface is either an address, an interface name or a VRF name', 'ping -I eth0', 22, 'input', '-I', NULL, 'eth0', NULL),
+('Numeric output', 'Numeric output only. No attempt will be made to lookup symbolic names for host addresses', 'ping -n', 22, 'checkbox', '-n', NULL, NULL, NULL),
+('Missing answers', 'Report outstanding ICMP ECHO reply before sending next packet', 'ping -O', 22, 'checkbox', '-O', NULL, NULL, NULL),
+('Quiet output', 'Nothing is displayed except the summary lines at startup time and when finished', 'ping -q', 22, 'checkbox', '-q', NULL, NULL, NULL),
+('Quality of Service', 'Set Quality of Service -related bits in ICMP datagrams', 'ping -Q 10', 22, 'input', '-Q', NULL, '10', NULL),
+('Packet size', 'Specifies the number of data bytes to be sent', 'ping -s 56', 22, 'input', '-s', NULL, '56', NULL),
+('TTL', 'Set the IP Time to Live', 'ping -t 15', 22, 'input', '-t', NULL, '15', NULL),
+('Verbose', 'Verbose output', 'ping -v', 22, 'checkbox', '-v', NULL, NULL, NULL),
+('Deadline', 'Specify a timeout, in seconds, before ping exits regardless of how many packets have been sent or received', 'ping -w 3', 22, 'input', '-w', NULL, '5', NULL),
+('Timeout', 'Time to wait for a response, in seconds', 'ping -W 1', 22, 'input', '-W', NULL, '1', NULL);
 -- --------------------------------------------------------
 
 --
@@ -220,7 +239,8 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 (17, 'httperf', 'httperf', 'benign application-level', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', NULL, NULL, 'httperf', NULL, NULL, 'Benign', 'Application level', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (18, 'hping3', 'hping3', 'benign throughput', 'http://www.hping.org', 'https://www.kali.org/tools/hping3/', NULL, 'Yes', 'assets/img/hping.svg', 'hping3', NULL, NULL, 'Benign', 'Throughput', '<b>hping</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (19, 'iperf3', 'iperf3', 'benign throughput', 'https://iperf.fr', 'https://iperf.fr', 'https://github.com/esnet/iperf', NULL, NULL, 'iperf3', NULL, NULL, 'Benign', 'Throughput', '<b>iperf3</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
-(20, 'd-itg', 'd-itg', 'benign model-based', 'https://traffic.comics.unina.it/software/ITG/', 'https://sources.debian.org/src/d-itg/', NULL, NULL, NULL, 'd-itg', NULL, NULL, 'Benign', 'Model-based', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>');
+(20, 'd-itg', 'd-itg', 'benign model-based', 'https://traffic.comics.unina.it/software/ITG/', 'https://sources.debian.org/src/d-itg/', NULL, NULL, NULL, 'd-itg', NULL, NULL, 'Benign', 'Model-based', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
+(22, 'ping', 'ping', 'benign throughput', 'send ICMP ECHO_REQUEST to network hosts', NULL, NULL, 'Yes', NULL, 'ping', NULL, NULL, 'Benign', 'Throughput', NULL);
 
 
 COMMIT;
