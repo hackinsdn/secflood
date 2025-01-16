@@ -68,7 +68,15 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('TCP Fin scan to check firewall', NULL, NULL, 1, 'checkbox', '-sF', NULL, NULL, 'Scan a firewall for security weakness'),
 ('TCP Xmas scan to check firewall', NULL, NULL, 1, 'checkbox', '-sX', NULL, NULL, 'Scan a firewall for security weakness'),
 ('TCP Null Scan to fool a firewall to generate a response', NULL, NULL, 1, 'checkbox', '-sN', NULL, NULL, 'Scan a firewall for security weakness'),
-('Interfaces', NULL, NULL, 1, 'input', '-e', NULL, 'eth0', 'INTERFACE');
+('Interfaces', NULL, NULL, 1, 'input', '-e', 'eth0', NULL, 'INTERFACE'),
+('Timing template', 'Set timing template (higher is faster)', NULL, 1, 'input', '-T', '1-5', NULL, 'TIMING'),
+('Host timeout', 'Give up on target after this long', NULL, 1, 'input', '--host-timeout', NULL, NULL, 'TIMING'),
+('Scan delay', 'Adjust delay between probes', NULL, 1, 'input', '--scan-delay', NULL, NULL, 'TIMING'),
+('Min rate', 'Send packets no slower than <number> per second', NULL, 1, 'input', '--min-rate', '10', NULL, 'TIMING'),
+('Max rate', 'Send packets no faster than <number> per second', NULL, 1, 'input', '--max-rate', '100', NULL, 'TIMING'),
+('Script', 'Comma separated list of directories, script-files or script-categories', NULL, 1, 'input', '--script', 'default', NULL, 'SCRIPTING'),
+('Script args', 'Provide arguments to scripts', NULL, 1, 'input', '--script-args', NULL, NULL, 'SCRIPTING'),
+('Script trace', 'Show all data sent and received', NULL, 1, 'checkbox', '--script-trace', NULL, NULL, 'SCRIPTING');
 
 --
 -- Populate data for `commands`: theHarvester
@@ -159,6 +167,30 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('User-agents', 'Randomizes user-agents with each request', NULL, 21, 'checkbox', '--randuseragents', NULL, NULL, NULL, NULL),
 ('HTTPS', 'Use HTTPS for the requests', NULL, 21, 'checkbox', '--https', NULL, NULL, NULL, NULL),
 ('Sleep time', 'Time to sleep between each header sent', NULL, 21, 'input', '--sleeptime', NULL, '5', NULL, NULL);
+
+--
+-- Populate data for `commands`: ping
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`, `sudo`) VALUES
+('IPv4', 'Use IPv4 only', 'ping -4', 22, 'checkbox', '-4', NULL, NULL, NULL),
+('IPv6', 'Use IPv6 only', 'ping -6', 22, 'checkbox', '-6', NULL, NULL, NULL),
+('Broadcast', 'Allow pinging a broadcast address', 'ping -b', 22, 'checkbox', '-b', NULL, NULL, NULL),
+('Count', 'Stop after sending count ECHO_REQUEST packets', 'ping -c 4', 22, 'input', '-c', '4', '4', NULL),
+('Print timestamp', 'Print timestamp (unix time + microseconds as in gettimeofday) before each line', 'ping -D', 22, 'checkbox', '-D', NULL, NULL, NULL),
+('Interval', 'Wait interval seconds between sending each packet', 'ping -i 5', 22, 'input', '-i', NULL, '5', NULL),
+('Interface', 'interface is either an address, an interface name or a VRF name', 'ping -I eth0', 22, 'input', '-I', NULL, 'eth0', NULL),
+('Fragmentation', 'Path MTU discovery strategy', 'ping -M do', 22, 'select', '#Set DF flag but subject to PMTU checks by kernel, packets too large will be rejected;-M do #Do PMTU discovery, fragment locally when packet size is large;-M want #Do not set DF flag;-M dont', NULL, NULL, NULL),
+('Numeric output', 'Numeric output only. No attempt will be made to lookup symbolic names for host addresses', 'ping -n', 22, 'checkbox', '-n', NULL, NULL, NULL),
+('Missing answers', 'Report outstanding ICMP ECHO reply before sending next packet', 'ping -O', 22, 'checkbox', '-O', NULL, NULL, NULL),
+('Quiet output', 'Nothing is displayed except the summary lines at startup time and when finished', 'ping -q', 22, 'checkbox', '-q', NULL, NULL, NULL),
+('Quality of Service', 'Set Quality of Service -related bits in ICMP datagrams', 'ping -Q 10', 22, 'input', '-Q', NULL, '10', NULL),
+('Record route', 'Bypass the normal routing tables and send directly to a host on an attached interface', 'ping -r', 22, 'checkbox', '-r', NULL, NULL, NULL),
+('Packet size', 'Specifies the number of data bytes to be sent', 'ping -s 56', 22, 'input', '-s', NULL, '56', NULL),
+('TTL', 'Set the IP Time to Live', 'ping -t 15', 22, 'input', '-t', NULL, '15', NULL),
+('Verbose', 'Verbose output', 'ping -v', 22, 'checkbox', '-v', NULL, NULL, NULL),
+('Deadline', 'Specify a timeout, in seconds, before ping exits regardless of how many packets have been sent or received', 'ping -w 3', 22, 'input', '-w', NULL, '5', NULL),
+('Timeout', 'Time to wait for a response, in seconds', 'ping -W 1', 22, 'input', '-W', NULL, '1', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -233,6 +265,8 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 (20, 'd-itg', 'd-itg', 'benign model-based', 'https://traffic.comics.unina.it/software/ITG/', 'https://sources.debian.org/src/d-itg/', NULL, NULL, NULL, 'd-itg', NULL, NULL, 'Benign', 'Model-based', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>');
 
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (21, 'slowloris', 'slowloris', 'denial-of-service', 'Low bandwidth DoS tool', 'https://github.com/gkbrk/slowloris', 'https://github.com/gkbrk/slowloris', 'Yes', NULL, 'slowloris', NULL, NULL, 'Denial of Service', NULL, NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (22, 'ping', 'ping', 'benign throughput', 'send ICMP ECHO_REQUEST to network hosts', NULL, NULL, 'Yes', NULL, 'ping', NULL, NULL, 'Benign', 'Throughput', NULL);
+
 
 
 COMMIT;
