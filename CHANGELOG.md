@@ -2,13 +2,13 @@
 
 ## [UNRELEASED] - Under development
 
-- Added new tools: slowloris, ping, nikto, hping3
+- Added new tools: slowloris (#21), ping (#31), nikto (25), hping3 (#15)
 - Configure more options for released tools:
-    - nmap: `--interface`, `--script`, `--min-rate`
-- Added default value for needed parameters
-- Configure pipeline to build and publish Secflood Docker image
-- Fix nmap option description
-- Fix bug to execute commands
+    - nmap: `--interface` (#3), `--script` (#34), `--min-rate` (#34)
+- Added default value for needed parameters (commit cd61539)
+- Configure pipeline to build and publish Secflood Docker image (#4 #6)
+- Fix nmap option description (#9)
+- Fix bug to execute commands (#11)
 
 ## [1.0.0] - DATE_TODO
 
