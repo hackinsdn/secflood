@@ -10,6 +10,7 @@
 - Configure pipeline to build and publish Secflood Docker image (#4 #6)
 - Fix nmap option description (#9)
 - Fix bug to execute commands (#11)
+- Support parameter specification without spaces (commit 709942a)
 
 ## [1.0.0] - DATE_TODO
 
