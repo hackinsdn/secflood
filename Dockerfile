@@ -19,12 +19,12 @@ RUN --mount=source=.,target=/mnt,type=bind \
 
 RUN curl -L --insecure https://trex-tgn.cisco.com/trex/release/v3.05.tar.gz | tar -xz -C /opt/trex
 
-RUN curl https://raw.githubusercontent.com/gkbrk/slowloris/refs/heads/master/slowloris.py -o /usr/local/bin/slowloris \
- && chmod +x /usr/local/bin/slowloris
-
 RUN --mount=source=.,target=/mnt,type=bind \
     cp -r /mnt/src /var/www/html/secflood \
  && install --mode 0755 --owner root /mnt/scripts/trex /usr/local/bin/
+
+RUN curl https://raw.githubusercontent.com/gkbrk/slowloris/refs/heads/master/slowloris.py -o /usr/local/bin/slowloris \
+ && chmod +x /usr/local/bin/slowloris
 
 RUN mkdir -p /var/lib/sqlite \
  && sqlite3 /var/lib/sqlite/secflood.db < /var/www/html/secflood/assets/database.sql \
