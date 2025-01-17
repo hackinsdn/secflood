@@ -221,6 +221,30 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Ignore HTTP codes', 'Ignore these HTTP codes as negative responses (always). Format is "302,301"', 'nikto -404code 302,301', 4, 'input', '-404code', NULL, '302,301'),
 ('Ignore string responses', 'Ignore this string in response body content as negative response (always). Can be a regular expression', 'nikto -404string Error', 4, 'input', '-404string', NULL, 'Error string');
 
+--
+-- Populate data for `commands`: traceroute
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`) VALUES
+('IPv4', 'Use IPv4', 'traceroute -4', 23, 'checkbox', '-4', NULL, NULL),
+('IPv6', 'Use IPv6', 'traceroute -6', 23, 'checkbox', '-6', NULL, NULL),
+('Debug', 'Socket level debugging', 'traceroute -d', 23, 'checkbox', '-d', NULL, NULL),
+('No fragmentation', 'Do not fragment packets', 'traceroute -F', 23, 'checkbox', '-F', NULL, NULL),
+('First TTL', 'Start from the first_ttl hop, instead from 1', 'traceroute -f 10', 23, 'input', '-f', NULL, '10'),
+('ICMP', 'Use ICMP ECHO for tracerouting', 'traceroute -I', 23, 'checkbox', '-I', NULL, NULL),
+('TCP', 'Use TCP SYN for tracerouting', 'traceroute -T', 23, 'checkbox', '-T', NULL, NULL),
+('Interface', 'Network interface to operate with', 'traceroute -i eth0', 23, 'input', '-i', NULL, 'eth0'),
+('Max TTL', 'Max number of hops', 'traceroute -m 10', 23, 'input', '-m', NULL, '10'),
+('Queries', 'Set the number of probes to be tried simultaneously', 'traceroute -N 16', 23, 'input', '-N', NULL, '16'),
+('No resolve', 'Do not resolve IP addresses', 'traceroute -n', 23, 'checkbox', '-n', NULL, NULL),
+('TOS', 'Set IPv4 Type of Service or IPv6 Traffic class', 'traceroute -t 8', 23, 'input', '-t', NULL, '8'),
+('Flow label', 'Use specified flow_label for IPv6 packets', 'traceroute -l 16', 23, 'input', '-l', NULL, '16'),
+('Hop queries', 'Set the number of probes per each hop', 'traceroute -q 3', 23, 'input', '-q', NULL, '3'),
+('Route', 'Bypass the normal routing and send directly to a host on a attached network', 'traceroute -r', 23, 'checkbox', '-r', NULL, NULL),
+('Source address', 'Use source src_addr for outgoing packets', 'traceroute -s 127.0.0.1', 23, 'input', '-s', NULL, '127.0.0.1'),
+('Send wait', 'Minimal time interval between probes (If the value is more than 10, then it specifies a number in milliseconds, else it is a number of seconds)', 'traceroute -z 3', 23, 'input', '-z', NULL, '3'),
+('UDP port', 'Use UDP to particular port for tracerouting (instead of increasing the port per each probe)', 'traceroute -U 53', 23, 'input', '-U', NULL, '53'),
+('MTU', 'Discover MTU along the path being traced', 'traceroute --mtu', 23, 'checkbox', '--mtu', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -296,6 +320,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (21, 'slowloris', 'slowloris', 'denial-of-service', 'Low bandwidth DoS tool', 'https://github.com/gkbrk/slowloris', 'https://github.com/gkbrk/slowloris', 'Yes', NULL, 'slowloris', NULL, NULL, 'Denial of Service', NULL, NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (22, 'ping', 'ping', 'benign throughput', 'send ICMP ECHO_REQUEST to network hosts', NULL, NULL, 'Yes', NULL, 'ping', NULL, NULL, 'Benign', 'Throughput', NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (23, 'traceroute', 'traceroute', 'benign route', 'tracks the route packets taken from an IP network on their way to a given host', 'https://traceroute.sourceforge.net/', NULL, 'Yes', NULL, 'traceroute', NULL, NULL, 'Benign', 'Route', NULL);
 
 
 

@@ -8,6 +8,7 @@ RUN --mount=source=.,target=/mnt,type=bind \
                                                vim python3-all pciutils binutils tcpdump \
                                                rsyslog iptables ssl-cert openssl ca-certificates \
                                                curl nmap hydra hping3 iperf3 d-itg socat \
+                                               traceroute \
  && apt install -y /mnt/misc/shellinabox_2.21.1_amd64.deb \
  && rm -rf /var/lib/apt/lists/*
 
