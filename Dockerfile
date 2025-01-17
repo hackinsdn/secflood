@@ -28,6 +28,7 @@ RUN curl https://raw.githubusercontent.com/gkbrk/slowloris/refs/heads/master/slo
 
 RUN apt-get update \
  && apt install --no-install-recommends -y libnet-ssleay-perl \
+ && rm -rf /var/lib/apt/lists/* \
  && git clone https://github.com/sullo/nikto /opt/nikto \
  && ln -s /opt/nikto/program/nikto.pl /usr/local/bin/nikto
 
