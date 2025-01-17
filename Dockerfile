@@ -26,6 +26,11 @@ RUN --mount=source=.,target=/mnt,type=bind \
 RUN curl https://raw.githubusercontent.com/gkbrk/slowloris/refs/heads/master/slowloris.py -o /usr/local/bin/slowloris \
  && chmod +x /usr/local/bin/slowloris
 
+RUN apt-get update \
+ && apt install --no-install-recommends -y libnet-ssleay-perl \
+ && git clone https://github.com/sullo/nikto /opt/nikto \
+ && ln -s /opt/nikto/program/nikto.pl /usr/local/bin/nikto
+
 RUN mkdir -p /var/lib/sqlite \
  && sqlite3 /var/lib/sqlite/secflood.db < /var/www/html/secflood/assets/database.sql \
  && chown www-data /var/lib/sqlite/secflood.db
