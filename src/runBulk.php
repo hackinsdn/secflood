@@ -94,7 +94,8 @@ foreach($commands as $key => $val) {
   $repeat = $val['repeat'];
   // Get all the inputs firt
   for ($i = 0; sizeof($arrayInputs) > $i; $i++) {
-    $cmd = $cmd . " " . $arrayInputs[$i][0] . " " . $arrayInputs[$i][1];
+    $space = (substr($arrayInputs[$i][0], -1) == '=') ? '' : ' ';
+    $cmd = $cmd . " " . $arrayInputs[$i][0] . "$space" . $arrayInputs[$i][1];
   }
   // checkboxes
   for ($i = 0; sizeof($arrayParams) > $i; $i++) {

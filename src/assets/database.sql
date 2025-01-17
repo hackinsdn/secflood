@@ -225,6 +225,7 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 -- Populate data for `commands`: traceroute
 --
 INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `value`, `example`) VALUES
+('Source port', 'Use source port num for outgoing packets', 'traceroute --sport=80', 23, 'input', '--sport=', NULL, '80'),
 ('IPv4', 'Use IPv4', 'traceroute -4', 23, 'checkbox', '-4', NULL, NULL),
 ('IPv6', 'Use IPv6', 'traceroute -6', 23, 'checkbox', '-6', NULL, NULL),
 ('Debug', 'Socket level debugging', 'traceroute -d', 23, 'checkbox', '-d', NULL, NULL),
