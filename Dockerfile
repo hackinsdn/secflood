@@ -38,7 +38,7 @@ RUN apt update \
  && rm -rf /var/lib/apt/lists/* \
  && git clone https://github.com/gildasio/h2t /opt/h2t \
  && ln -s /opt/h2t/h2t.py /usr/local/bin/h2t \
- && sed -i 's/headers\//\/opt\/h2t\/headers\//g' /opt/h2t/h2t.py
+ && sed -i 's@headers/@/opt/h2t/headers/@g' /opt/h2t/h2t.py
 
 RUN mkdir -p /var/lib/sqlite \
  && sqlite3 /var/lib/sqlite/secflood.db < /var/www/html/secflood/assets/database.sql \
