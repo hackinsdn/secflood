@@ -246,6 +246,24 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('UDP port', 'Use UDP to particular port for tracerouting (instead of increasing the port per each probe)', 'traceroute -U 53', 23, 'input', '-U', NULL, '53'),
 ('MTU', 'Discover MTU along the path being traced', 'traceroute --mtu', 23, 'checkbox', '--mtu', NULL, NULL);
 
+--
+-- Populate data for `commands`: h2t
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`) VALUES
+('Verbose', 'Verbose output', 'h2t scan', 24, 'checkbox', '-v', NULL),
+('Verboser', 'More verbose output', 'h2t scan', 24, 'checkbox', '-vv', NULL),
+('Good headers', 'Scan good headers only', 'h2t scan', 24, 'checkbox', '-g', NULL),
+('Bad headers', 'Scan bad headers only', 'h2t scan', 24, 'checkbox', '-b', NULL),
+('No banner', 'Do not print h2t banner', 'h2t scan', 24, 'checkbox', '--no-banner', NULL),
+('No explanation', 'Do not print h2t output explanation', 'h2t scan', 24, 'checkbox', '--no-explanation', NULL),
+('No redirect', 'Do not follow http redirects', 'h2t scan', 24, 'checkbox', '--no-redirect', NULL),
+('Insecure', 'Do not verify SSL certificate', 'h2t scan', 24, 'checkbox', '--insercure', NULL),
+('Status output', 'output actual status (eg: existent headers only)', 'h2t scan', 24, 'checkbox', '--status', NULL),
+('User-Agent', 'Set user-agent', 'h2t scan', 24, 'input', '--user-agent', 'h2t user-agent'),
+('Headers', 'Scan only these headers', 'h2t scan', 24, 'input', '--headers', 'X-Frame-Options Server'),
+('Print output', 'A list of additional information about the headers to print (description and/or refs)', 'h2t scan', 24, 'input', '--print', 'description refs'),
+('Ignore headers', 'A list of headers to ignore in the results', 'h2t scan', 24, 'input', '--ignore-headers', 'Server X-Frame-Options');
+
 -- --------------------------------------------------------
 
 --
@@ -322,6 +340,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (21, 'slowloris', 'slowloris', 'denial-of-service', 'Low bandwidth DoS tool', 'https://github.com/gkbrk/slowloris', 'https://github.com/gkbrk/slowloris', 'Yes', NULL, 'slowloris', NULL, NULL, 'Denial of Service', NULL, NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (22, 'ping', 'ping', 'benign throughput', 'send ICMP ECHO_REQUEST to network hosts', NULL, NULL, 'Yes', NULL, 'ping', NULL, NULL, 'Benign', 'Throughput', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (23, 'traceroute', 'traceroute', 'benign route', 'tracks the route packets taken from an IP network on their way to a given host', 'https://traceroute.sourceforge.net/', NULL, 'Yes', NULL, 'traceroute', NULL, NULL, 'Benign', 'Route', NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (24, 'h2t', 'HTTP Hardening Tool', 'benign vulnerability-analysis', 'h2t (HTTP Hardening Tool) scans a website and suggests security headers to apply', 'https://certbahia.pop-ba.rnp.br/projects/h2t/', 'https://github.com/gildasio/h2t', 'Yes', NULL, 'h2t scan', '-- ', NULL, 'Benign', 'Vulnerability Analysis', NULL);
 
 
 
