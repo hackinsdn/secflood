@@ -264,6 +264,21 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Print output', 'A list of additional information about the headers to print (description and/or refs)', 'h2t scan', 24, 'input', '--print', 'description refs'),
 ('Ignore headers', 'A list of headers to ignore in the results', 'h2t scan', 24, 'input', '--ignore-headers', 'Server X-Frame-Options');
 
+--
+-- Populate data for `commands`: arjun
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`) VALUES
+('Quiet', 'Quiet mode, no output', 'arjun -q', 25, 'checkbox', '-q', NULL),
+('Stable', 'Prefer stability over speed', 'arjun --stable', 25, 'checkbox', '--stable', NULL),
+('No redirects', 'Disable redirects', 'arjun --disable-redirects', 25, 'checkbox', '--disable-redirects', NULL),
+('Delay', 'Delay between requests in seconds', 'arjun -d 0', 25, 'input', '-d', '0'),
+('Threads', 'Number of concurrent threads', 'arjun -t 5', 25, 'input', '-t', '5'),
+('Timeout', 'HTTP request timeout in seconds', 'arjun -T 15', 25, 'input', '-T', '15'),
+('Chunk size', 'The number of parameters to be sent at once', 'arjun -c 10', 25, 'input', '-c', '10'),
+('Include data', 'Include this data in every request', 'arjun --include TEST', 25, 'input', '--include', 'TESTE'),
+('Headers', 'Add headers. Separate multiple headers with a new line', "arjun --headers 'H1: 1\nH2: 2'", 25, 'input', '--headers', "'H1: 1\nH2: 2'"),
+('Method', 'Request method to use', 'arjun -m GET', 25, 'select', '-m GET#GET; -m POST#POST; -m XML#XML; -m JSON #JSON; -m HEADERS #HEADERS', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -341,6 +356,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (22, 'ping', 'ping', 'benign throughput', 'send ICMP ECHO_REQUEST to network hosts', NULL, NULL, 'Yes', NULL, 'ping', NULL, NULL, 'Benign', 'Throughput', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (23, 'traceroute', 'traceroute', 'benign route', 'tracks the route packets taken from an IP network on their way to a given host', 'https://traceroute.sourceforge.net/', NULL, 'Yes', NULL, 'traceroute', NULL, NULL, 'Benign', 'Route', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (24, 'h2t', 'HTTP Hardening Tool', 'benign vulnerability-analysis', 'h2t (HTTP Hardening Tool) scans a website and suggests security headers to apply', 'https://certbahia.pop-ba.rnp.br/projects/h2t/', 'https://github.com/gildasio/h2t', 'Yes', NULL, 'h2t scan', '-- ', NULL, 'Benign', 'Vulnerability Analysis', NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (25, 'arjun', 'arjun', 'information-gathering web-application', 'HTTP parameter discovery suite', NULL, 'https://github.com/s0md3v/Arjun', 'Yes', 'assets/img/arjun.png', 'arjun', '-u', NULL, 'Information-Gathering', 'Web-Application', NULL);
 
 
 
