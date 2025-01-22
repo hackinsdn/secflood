@@ -279,6 +279,68 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Headers', 'Add headers. Separate multiple headers with a new line', "arjun --headers 'H1: 1\nH2: 2'", 25, 'input', '--headers', "'H1: 1\nH2: 2'"),
 ('Method', 'Request method to use', 'arjun -m GET', 25, 'select', '-m GET#GET; -m POST#POST; -m XML#XML; -m JSON #JSON; -m HEADERS #HEADERS', NULL);
 
+--
+-- Populate data for `commands`: sqlmap
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`) VALUES
+('Random user-agent', 'Use randomly selected HTTP User-Agent header value', 'sqlmap --random-agent', 26, 'checkbox', '--random-agent', NULL),
+('Retrieve all', 'Retrieve everything', 'sqlmap --all', 26, 'checkbox', '--all', NULL),
+('DBMS banner', 'Retrieve DBMS banner', 'sqlmap --banner', 26, 'checkbox', '--banner', NULL),
+('Current user', 'Retrieve DBMS current user', 'sqlmap --current-user', 26, 'checkbox', '--current-user', NULL),
+('Current database', 'Retrieve DBMS current database', 'sqlmap --current-db', 26, 'checkbox', '--current-db', NULL),
+('Hostname', 'Retrieve DBMS server hostname', 'sqlmap --hostname', 26, 'checkbox', '--hostname', NULL),
+('Is DBA?', 'Detect if the DBMS current user is DBA', 'sqlmap --is-dba', 26, 'checkbox', '--is-dba', NULL),
+('Passwords', 'Enumerate DBMS users password hashes', 'sqlmap --passwords', 26, 'checkbox', '--passwords', NULL),
+('Users', 'Enumerate DBMS users', 'sqlmap --users', 26, 'checkbox', '--users', NULL),
+('Privileges', 'Enumerate DBMS users privileges', 'sqlmap --privileges', 26, 'checkbox', '--privileges', NULL),
+('Roles', 'Enumerate DBMS users roles', 'sqlmap --roles', 26, 'checkbox', '--roles', NULL),
+('Databases', 'Enumerate DBMS databases', 'sqlmap --dbs', 26, 'checkbox', '--dbs', NULL),
+('Tables', 'Enumerate DBMS database tables', 'sqlmap --tables', 26, 'checkbox', '--tables', NULL),
+('Columns', 'Enumerate DBMS database table columns', 'sqlmap --columns', 26, 'checkbox', '--columns', NULL),
+('Schema', 'Enumerate DBMS schema', 'sqlmap --schema', 26, 'checkbox', '--schema', NULL),
+('Dump', 'Dump DBMS database table entries', 'sqlmap --dump', 26, 'checkbox', '--dump', NULL),
+('Dump all', 'Dump all DBMS databases tables entries', 'sqlmap --dump-all', 26, 'checkbox', '--dump-all', NULL),
+('Flush session', 'Flush session files for current target', 'sqlmap --flush-session', 26, 'checkbox', '--flush-session', NULL),
+('Disable colors', 'Disable console output coloring', 'sqlmap --disable-coloring', 26, 'checkbox', '--disable-coloring', NULL),
+('Fingerprint', 'Perform an extensive DBMS version fingerprint', 'sqlmap --fingerprint', 26, 'checkbox', '--fingerprint', NULL),
+('Database', 'DBMS database to enumerate', 'sqlmap -D database', 26, 'input', '-D', 'database'),
+('Table', 'DBMS database table(s) to enumerate', 'sqlmap -T table', 26, 'input', '-T', 'table'),
+('Column', 'DBMS database table column(s) to enumerate', 'sqlmap -C column', 26, 'input', '-C', 'column'),
+('Verbosity', 'Verbosity level: from 0 to 6', 'sqlmap -v 3', 26, 'input', '-v', '3'),
+('Level', 'Level of tests to perform: from 1 to 5', 'sqlmap --level 5', 26, 'input', '--level', '5'),
+('Risk', 'Risk of tests to perform: from 1 to 3', 'sqlmap --risk 3', 26, 'input', '--risk', '3'),
+('Cookie', 'HTTP Cookie header value', 'sqlmap --cookie "PHPSESSID=a8d127e..."', 26, 'input', '--cookie', '"PHPSESSID=a8d127e"'),
+('Data', 'Data string to be sent through POST', 'sqlmap --data "id=1"', 26, 'input', '--data', '"id=1"'),
+('Parameter', 'Testable parameter(s)', 'sqlmap -p id', 26, 'input', '-p', 'id'),
+('DBMS', 'Force back-end DBMS to provided value', 'sqlmap --dbms MySQL', 26, 'input', '--dbms', 'MySQL'),
+('True detection string', 'String to match when query is evaluated to True', 'sqlmap --string "STR"', 26, 'input', '--string', '"STR"'),
+('False detection string', 'String to match when query is evaluated to False', 'sqlmap --no-string "NOSTR"', 26, 'input', '--no-string', '"NOSTR"'),
+('Regex detection', 'Regexp to match when query is evaluated to True', 'sqlmap --regexp "REGEX"', 26, 'input', '--regexp', '"REGEX"'),
+('HTTP Code', 'HTTP code to match when query is evaluated to True', 'sqlmap --code 200', 26, 'input', '--code', '200'),
+('Optmization', 'Turn on all optimization switches', 'sqlmap -o', 26, 'checkbox', '-o', NULL),
+('Predict output', 'Predict common queries output', 'sqlmap --predict-output', 26, 'checkbox', '--predict-output', NULL),
+('HTTP keep alive', 'Use persistent HTTP(s) connections', 'sqlmap --keep-alive', 26, 'checkbox', '--keep-alive', NULL),
+('Threads', 'Max number of concurrent HTTP(s) requests', 'sqlmap --threads 1', 26, 'input', '--threads', '1'),
+('Skip parameters', 'Skip testing for given parameter(s)', 'sqlmap --skip "name"', 26, 'input', '--name', '"name"'),
+('Forms', 'Parse and test forms on target URL', 'sqlmap --forms', 26, 'checkbox', '--forms', NULL),
+('Web root dir', 'Web server document root directory', 'sqlmap --web-root /var/www', 26, 'input', '--web-root', '/var/www'),
+('Force SSL', 'Force usage of SSL/HTTPS', 'sqlmap --force-ssl', 26, 'checkbox', '--force-ssl', NULL),
+('No redirects', 'Ignore redirection attempts', 'sqlmap --ignore-redirects', 26, 'checkbox', '--ignore-redirects', NULL),
+('Ignore timeouts', 'Ignore connection timeouts', 'sqlmap --ignore-timeouts', 26, 'checkbox', '--ignore-timeouts', NULL),
+('No URL encode', 'Skip URL encoding of payload data', 'sqlmap --skip-urlencode', 26, 'checkbox', '--skip-urlencode', NULL),
+('User-agent', 'HTTP User-Agent header value', 'sqlmap -A "Mozilla"', 26, 'input', '-A', '"Mozilla"'),
+('Headers', 'Extra headers', 'sqlmap --headers "X-Forwarded-For: 127.0.0.1"', 26, 'input', '--headers', '"X-Forwarded-For: 127.0.0.1"'),
+('Method', 'Force usage of given HTTP method', 'sqlmap --method PUT', 26, 'input', '--method', 'PUT'),
+('Timeout', 'Seconds to wait before timeout connection', 'sqlmap --timeout 5', 26, 'input', '--timeout', '5'),
+('Retries', 'Retries when the connection timeouts', 'sqlmap --retries 3', 26, 'input', '--retries', '3'),
+('CSRF token', 'Parameter used to hold anti-CSRF token', 'sqlmap --csrf-token CSRF', 26, 'input', '--csrf-token', 'CSRF'),
+('CSRF url', 'URL address to visit for extraction of anti-CSRF token', 'sqlmap --csrf-url http://...', 26, 'input', '--csrf-url', 'http://...'),
+('CSRF method', 'HTTP method to use during anti-CSRF token page visit', 'sqlmap --csrf-method GET', 26, 'input', '--csrf-method', 'GET'),
+('CSRF data', 'POST data to send during anti-CSRF token page visit', 'sqlmap --csrf-data DATA', 26, 'input', '--csrf-data', 'DATA'),
+('CSRF retries', 'Retries for anti-CSRF token retrieval', 'sqlmap --csrf-retries', 26, 'input', '--csrf-retries', '3'),
+('Time sec', 'Seconds to delay the DBMS response', 'sqlmap --time-sec 5', 26, 'input', '--time-sec', '5'),
+('Techniques', 'SQL injection techniques to use', 'sqlmap --technique BEUSTQ', 26, 'input', '--technique', 'BEUSTQ');
+
 -- --------------------------------------------------------
 
 --
@@ -357,6 +419,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (23, 'traceroute', 'traceroute', 'benign route', 'tracks the route packets taken from an IP network on their way to a given host', 'https://traceroute.sourceforge.net/', NULL, 'Yes', NULL, 'traceroute', NULL, NULL, 'Benign', 'Route', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (24, 'h2t', 'HTTP Hardening Tool', 'benign vulnerability-analysis', 'h2t (HTTP Hardening Tool) scans a website and suggests security headers to apply', 'https://certbahia.pop-ba.rnp.br/projects/h2t/', 'https://github.com/gildasio/h2t', 'Yes', NULL, 'h2t scan', '-- ', NULL, 'Benign', 'Vulnerability Analysis', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (25, 'arjun', 'arjun', 'information-gathering web-application', 'HTTP parameter discovery suite', NULL, 'https://github.com/s0md3v/Arjun', 'Yes', 'assets/img/arjun.png', 'arjun', '-u', NULL, 'Information-Gathering', 'Web-Application', NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (26, 'sqlmap', 'sqlmap', 'web-application vulnerability-analysis', 'Automatic SQL injection and database takeover tool', 'https://sqlmap.org/', 'https://github.com/sqlmapproject/sqlmap', 'Yes', NULL, 'sqlmap --batch', '-u', NULL, 'Web-Application', 'Vulnerability-Analysis', NULL);
 
 
 
