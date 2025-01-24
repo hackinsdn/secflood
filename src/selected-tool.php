@@ -252,6 +252,15 @@
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class='col-md-12 col-lg-6 col-xl-4'>
+                        <div class='form-group'>
+                          <label class='form-control-label' for='input-username'>Execution timeout</label>
+                          <input type='text' id='timeout' class='form-control form-control-alternative' placeholder='Example: 60'>
+                          <p class="font-italic text-left small">Max seconds to last execution</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                 </div>
@@ -348,10 +357,11 @@
               arrayParams.push(select[index].value);           
           }
       }
-      /* GET execution parameters: delay, repeat and delay-strategy */
+      /* GET execution parameters: delay, repeat, delay-strategy and timeout */
       var delay = document.getElementById('delay').value;
       var delayStrategy = document.getElementById('delay-strategy').value;
       var repeat = document.getElementById('repeat').value;
+      var timeout = document.getElementById('timeout').value;
       $.post("run.php", {
         "command" : command, 
         "target" : target, 
@@ -360,6 +370,7 @@
         "delay": delay,
         "delayStrategy": delayStrategy,
         "repeat": repeat,
+        "timeout": timeout,
       }).done(function (data) {
         document.getElementById("terminal-data").innerHTML = data; //Pega a resposta da pagina_que_ira_receber_o_post.php
       }).fail(function (error) {
@@ -402,6 +413,7 @@
       var delay = document.getElementById('delay').value;
       var delayStrategy = document.getElementById('delay-strategy').value;
       var repeat = document.getElementById('repeat').value;
+      var timeout = document.getElementById('timeout').value;
 
       var benignStreams = localStorage.getItem('benignStreams');
       if (benignStreams) {
@@ -417,6 +429,7 @@
         "delay": delay,
         "delayStrategy": delayStrategy,
         "repeat": repeat,
+        "timeout": timeout,
       };
       localStorage.setItem('benignStreams', JSON.stringify(benignStreams));
       document.getElementById("add-bulk-exec").innerHTML = "<div class='alert alert-success alert-dismissible fade show' role='alert' style='position: fixed; z-index: 2; bottom: 0; right: 0; width: 40%;'><span class='alert-inner--icon'><i class='ni ni-fat-checked'></i></span><span class='alert-inner--text'><strong>Success!</strong> Command saved to execute later on in bulk mode.</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";

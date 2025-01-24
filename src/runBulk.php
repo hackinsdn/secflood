@@ -92,6 +92,7 @@ foreach($commands as $key => $val) {
   $delay = $val['delay'];
   $delayStrategy = $val['delayStrategy'];
   $repeat = $val['repeat'];
+  $timeout = $val['timeout'];
   // Get all the inputs firt
   for ($i = 0; sizeof($arrayInputs) > $i; $i++) {
     $space = (substr($arrayInputs[$i][0], -1) == '=') ? '' : ' ';
@@ -111,6 +112,10 @@ foreach($commands as $key => $val) {
     $delayStrategy = "--delay_strategy $delayStrategy";
   }
   $run = $val["command"] . " " . $cmd . " " . $val["target"];
+  if (isset($timeout) && !empty($timeout)) {
+    $run = "timeout " . $timeout . " " . $run;
+  }
+
   $runFull = "tmux new-session -d -s bulk-exe-$key python3 $cur_dir/launch-cmd.py $delay $repeat $delayStrategy --cmd '$run'";
   #shell_exec($runFull);
   error_log("running command $runFull");

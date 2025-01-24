@@ -22,6 +22,7 @@
                     <th><h5 style="color: white">Command</h5></th>
                     <th><h5 style="color: white">Repeat execution</h5></th>
                     <th><h5 style="color: white">Delay to start</h5></th>
+                    <th><h5 style="color: white">Execution timeout</h5></th>
                   </tr>
                 </thead>
                 <tbody id='bulk-exec-tbody'>
@@ -59,11 +60,15 @@
       if (value.delay) {
         delayStr = `${value.delayStrategy}(${value.delay})`;
       }
+      if (!value.timeout) {
+        value.timeout = "--";
+      }
       return (
         `<tr>
            <td>${value.command} ${value.arrayInputs.map(x => x.join(' ')).join(' ')} ${value.arrayParams.join(' ')} ${value.target}</td>
            <td>${value.repeat}</td>
            <td>${delayStr}</td>
+           <td>${value.timeout}</td>
          </tr>`
       );
     }).join('');

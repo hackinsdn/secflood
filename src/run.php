@@ -14,6 +14,7 @@
 	$target = $_POST['target'];
 	$arrayInputs = $_POST['arrayInputs'] ?? [];
 	$arrayParams = $_POST['arrayParams'] ?? [];
+	$timeout = $_POST['timeout'];
 	
 	$cmd = "";
 
@@ -42,6 +43,9 @@
 
 		$run = $command . " " . $cmd . " " . $target;
 
+		if ($timeout) {
+			$run = "timeout " . $timeout . " " . $run;
+		}
 
 
         echo "<div class='row align-items-center'>
