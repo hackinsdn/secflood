@@ -341,6 +341,30 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Time sec', 'Seconds to delay the DBMS response', 'sqlmap --time-sec 5', 26, 'input', '--time-sec', '5'),
 ('Techniques', 'SQL injection techniques to use', 'sqlmap --technique BEUSTQ', 26, 'input', '--technique', 'BEUSTQ');
 
+--
+-- Populate data for `commands`: iperf
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`) VALUES
+('Port', 'Set server port to listen on/connect to', 'iperf3 --port 5201', 19, 'input', '--port', '5201'),
+('Output format', 'format to report: Kbits/Mbits/Gbits/Tbits: kmgtKMGT', 'iperf3 --format M', 19, 'input', '--format', 'M'),
+('Interval', 'pause n seconds between periodic throughput reports', 'iperf3 --interval 1', 19, 'input', '--interval', '1'),
+('Verbose', 'Verbose output', 'iperf3 --verbose', 19, 'checkbox', '--verbose', NULL),
+('Debug', 'Debug output', 'iperf3 --debug', 19, 'checkbox', '--debug', NULL),
+('Mode', 'Server or client mode', 'iperf3 -s', 19, 'select', '--server #Server mode;--client #Client mode', NULL),
+('Use SCTP', '(client only) use SCTP rather than TCP', 'iperf3 --sctp', 19, 'checkbox', '--sctp', NULL),
+('Use UDP', '(client only) use UDP rather than TCP', 'iperf3 --udp', 19, 'checkbox', '--udp', NULL),
+('Timeout', '(client only) set timeout for establishing the initial control connection to the server in milliseconds', 'iperf3 --connect-timeout 10000', 19, 'input', '--connect-timeout', '10000'),
+('Time to transmit', '(client only) time in seconds to transmit for', 'iperf3 --time 10', 19, 'input', '--time', '10'),
+('Client port', '(client only) bind data streams to a specific client port', 'iperf3 --cport 8000', 19, 'input', '--cport', '8000'),
+('Parallel', '(client only) number of parallel client streams to run', 'iperf3 --parallel 2', 19, 'input', '--parallel', '2'),
+('Reverse direction', '(client only) the server sends data to the client', 'iperf3 --reverse', 19, 'checkbox', '--reverse', NULL),
+('Both direction', '(client only) test in both directions (normal and reverse), with both the client and server sending and receiving data simultaneously', 'iperf3 --bidir', 19, 'checkbox', '--bidir', NULL),
+('IPv4', '(client only) only use IPv4', 'iperf3 -4', 19, 'checkbox', '-4', NULL),
+('IPv6', '(client only) only use IPv6', 'iperf3 -6', 19, 'checkbox', '-6', NULL),
+('Flowlabel', '(client only) set the IPv6 flow label', 'iperf3 --flowlabel 0', 19, 'input', '--flolabel', '0'),
+('Zerocopy', '(client only) Use a "zero copy" method of sending data', 'iperf3 --zerocopy', 19, 'checkbox', '--zerocopy', NULL),
+('Dont fragment', '(client only) Set the IPv4 Dont Fragment (DF) bit on outgoing packets', 'iperf3', 19, 'checkbox', '--dont-fragment', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -411,7 +435,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 (16, 'TRex', 'TRex: Realistic Traffic Generator', 'benign script-driven', 'https://trex-tgn.cisco.com', 'https://trex-tgn.cisco.com', 'https://github.com/cisco-system-traffic-generator', 'Yes', 'assets/img/trex.png', 'trex', NULL, 'TRex is an open source, low cost, stateful and stateless traffic generator fuelled by DPDK. It generates L3-7 traffic, and supports Stateless and Advanced Stateful functionality.', 'Benign', 'Script-driven', '<b>TRex</b> works by generating traffic using a stateless and statefull approach.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p></p>\r\n\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p></p>'),
 (17, 'httperf', 'httperf', 'benign application-level', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', NULL, NULL, 'httperf', NULL, NULL, 'Benign', 'Application level', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (18, 'hping3', 'hping3', 'benign throughput', 'http://www.hping.org', 'https://www.kali.org/tools/hping3/', NULL, 'Yes', 'assets/img/hping.svg', 'hping3', NULL, NULL, 'Benign', 'Throughput', '<b>hping</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
-(19, 'iperf3', 'iperf3', 'benign throughput', 'https://iperf.fr', 'https://iperf.fr', 'https://github.com/esnet/iperf', NULL, NULL, 'iperf3', NULL, NULL, 'Benign', 'Throughput', '<b>iperf3</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
+(19, 'iperf3', 'iperf3', 'benign throughput', 'perform network throughput tests', 'https://iperf.fr', 'https://github.com/esnet/iperf', 'Yes', NULL, 'iperf3', NULL, NULL, 'Benign', 'Throughput', '<b>iperf3</b> is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (20, 'd-itg', 'd-itg', 'benign model-based', 'https://traffic.comics.unina.it/software/ITG/', 'https://sources.debian.org/src/d-itg/', NULL, NULL, NULL, 'd-itg', NULL, NULL, 'Benign', 'Model-based', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>');
 
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (21, 'slowloris', 'slowloris', 'denial-of-service', 'Low bandwidth DoS tool', 'https://github.com/gkbrk/slowloris', 'https://github.com/gkbrk/slowloris', 'Yes', NULL, 'slowloris', NULL, NULL, 'Denial of Service', NULL, NULL);
@@ -420,7 +444,6 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (24, 'h2t', 'HTTP Hardening Tool', 'benign vulnerability-analysis', 'h2t (HTTP Hardening Tool) scans a website and suggests security headers to apply', 'https://certbahia.pop-ba.rnp.br/projects/h2t/', 'https://github.com/gildasio/h2t', 'Yes', NULL, 'h2t scan', '-- ', NULL, 'Benign', 'Vulnerability Analysis', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (25, 'arjun', 'arjun', 'information-gathering web-application', 'HTTP parameter discovery suite', NULL, 'https://github.com/s0md3v/Arjun', 'Yes', 'assets/img/arjun.png', 'arjun', '-u', NULL, 'Information-Gathering', 'Web-Application', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (26, 'sqlmap', 'sqlmap', 'web-application vulnerability-analysis', 'Automatic SQL injection and database takeover tool', 'https://sqlmap.org/', 'https://github.com/sqlmapproject/sqlmap', 'Yes', NULL, 'sqlmap --batch', '-u', NULL, 'Web-Application', 'Vulnerability-Analysis', NULL);
-
 
 
 COMMIT;
