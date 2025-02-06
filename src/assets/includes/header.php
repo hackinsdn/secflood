@@ -149,7 +149,7 @@
               <span>My profile</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="login.php" class="dropdown-item">
+            <a href="logout.php" class="dropdown-item">
               <i class="ni ni-user-run"></i>
               <span>Logout</span>
             </a>
