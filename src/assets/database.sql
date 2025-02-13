@@ -339,6 +339,7 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('CSRF data', 'POST data to send during anti-CSRF token page visit', 'sqlmap --csrf-data DATA', 26, 'input', '--csrf-data', 'DATA'),
 ('CSRF retries', 'Retries for anti-CSRF token retrieval', 'sqlmap --csrf-retries', 26, 'input', '--csrf-retries', '3'),
 ('Time sec', 'Seconds to delay the DBMS response', 'sqlmap --time-sec 5', 26, 'input', '--time-sec', '5'),
+('Tamper', 'Use given script(s) for tampering injection data', 'sqlmap --tamper=space2hash', 26, 'input', '--tamper', '"space2comment,space2hash"'),
 ('Techniques', 'SQL injection techniques to use', 'sqlmap --technique BEUSTQ', 26, 'input', '--technique', 'BEUSTQ');
 
 --

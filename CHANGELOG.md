@@ -12,6 +12,7 @@
 - Fix nmap option description (#9)
 - Fix bug to execute commands (#11)
 - Support parameter specification without spaces (commit 709942a)
+- Add `--tamper` on SQLmap (#56)
 
 ## [1.0.0] - DATE_TODO
 
