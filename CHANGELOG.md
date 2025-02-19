@@ -4,7 +4,7 @@
 
 - Added new tools: slowloris (#21), ping (#31), nikto (25), hping3 (#15),
                    traceroute (#32), h2t (#23), arjun (#28), sqlmap (#22),
-                   iperf (#33)
+                   iperf (#33), dig (#27), dnsenum (#14)
 - Configure more options for released tools:
     - nmap: `--interface` (#3), `--script` (#34), `--min-rate` (#34)
 - Added default value for needed parameters (commit cd61539)
