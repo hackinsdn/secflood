@@ -370,14 +370,24 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 -- Populate data for `commands`: dig
 --
 INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES 
-('DNS Server', 'Defines the DNS server which will be used in the command', 'dig @8.8.8.8 example.hackinsdn.ubfa,br', 27, 'input', NULL, NULL, NULL, 'BASIC OPTIONS'),
-('DNS domain to query', 'Set the DNS domain which will be queried', 'domain example.hackinsdn.ufba.br', 27, 'input', 'domain', NULL, NULL, 'BASIC OPTIONS'),
-('Query class (default: in)', NULL, 'dig example.com -q-class HS', 27, 'input', '-q-class', NULL, NULL, 'BASIC OPTIONS'),
-('Query type (default: a)', NULL, 'dig example.com -q-type MX', 27, 'input', '-q-type', NULL, NULL, 'BASIC OPTIONS'),
-('Query options, multiple choices', NULL, 'dig example.com -q-opt -4 -b 192.168.1.1#53', 27, 'input', NULL, NULL, NULL, 'BASIC COMMANDS'),
-('Display options, multiple choices', NULL, 'dig example.com +short +dnssec +retry=3 +timeout=5', 27, 'input', NULL, NULL, NULL, 'BASIC COMMANDS'),
-('Global DNS options configuration','Affects all queries', 'dig global-d-opt example.com', 27, 'checkbox', 'global-d-opts', NULL, NULL, 'DNS OPTIONS CONFIGURATIONS'),
-('Local DNS options configurations', 'Affects specific queries', 'dig local-d-opt example.com', 27, 'checkbox', 'local-d-opts', NULL, NULL, 'DNS OPTIONS CONFIGURATIONS');
+('IPv4 only', 'Use IPv4 query transport only', 'dig -4 example.com', 27, 'checkbox', '-4', NULL, NULL, 'QUERY OPTIONS'),
+('IPv6 only', 'Use IPv6 query transport only', 'dig -6 example.com', 27, 'checkbox', '-6', NULL, NULL, 'QUERY OPTIONS'),
+('addr/port (opt)', 'Bind to source address/port', 'dig -b 10.0.0.1#80', 27, 'input', '-b', NULL, NULL, 'QUERY OPTIONS'), 
+('Query Class', 'The most commonly used class is IN (Internet), which is the default for most DNS queries. However, there are other classes like CH (Chaos) and HS (Hesiod) which are less used', 'dig -c HS example.com', 27, 'input', '-c', NULL, NULL, 'QUERY OPTIONS'),
+('Port Number', 'Specifies the port number for the query', 'dig -p 80 example.com', 27, 'input', '-p', NULL, NULL, 'QUERY OPTIONS'),
+('Query Name', 'Specifies the query name for the DNS lookup', 'dig -q example.com', 27, 'input', '-q', NULL, NULL, 'QUERY OPTIONS'),
+('Query Type', 'Specifies the query type', 'dig -t MX example.com', 27, 'input', '-t', NULL, NULL, 'QUERY OPTIONS'),
+('Reverse Lookup', 'Set IP address which will be used for reverse lookup', 'dig -x 10.0.0.1', 27, 'input', '-x', NULL, NULL, 'QUERY OPTIONS'),
+('Display Flags', 'Set or Clear All Display Flags', 'dig +[no]all example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Answer Section', 'Control Display of Answer Section', 'dig +[no]answer example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Authority Section', 'Control Display of Authority Section', 'dig +[no]authority example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Question Section', 'Control Display of Question Section', 'dig +[no]question example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Stats', 'Control Display of Stats', 'dig +[no]stats example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('DNSSEC', 'Request DNSSEC Records', 'dig +[no]dnssec example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Display TTL', 'Display Time to Live (TTL) in Records', 'dig +[no]ttlid example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Human-Readble TTL', 'Display TTL in Human-Readable Units', 'dig +[no]ttlunits example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Set Query Timeout', NULL, 'dig +timeout=5 example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Per-Record Comments', 'Control Display of Per-Record Comments', 'dig +[no]rrcomments example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS');
 
 --
 -- Populate data for `commands`: dnsenum
@@ -483,7 +493,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (24, 'h2t', 'HTTP Hardening Tool', 'benign vulnerability-analysis', 'h2t (HTTP Hardening Tool) scans a website and suggests security headers to apply', 'https://certbahia.pop-ba.rnp.br/projects/h2t/', 'https://github.com/gildasio/h2t', 'Yes', NULL, 'h2t scan', '-- ', NULL, 'Benign', 'Vulnerability Analysis', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (25, 'arjun', 'arjun', 'information-gathering web-application', 'HTTP parameter discovery suite', NULL, 'https://github.com/s0md3v/Arjun', 'Yes', 'assets/img/arjun.png', 'arjun', '-u', NULL, 'Information-Gathering', 'Web-Application', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (26, 'sqlmap', 'sqlmap', 'web-application vulnerability-analysis', 'Automatic SQL injection and database takeover tool', 'https://sqlmap.org/', 'https://github.com/sqlmapproject/sqlmap', 'Yes', NULL, 'sqlmap --batch', '-u', NULL, 'Web-Application', 'Vulnerability-Analysis', NULL),
-INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (27, 'Dig', 'Dig', 'information-gathering','The `dig` command queries DNS servers to retrieve domain name information, helping with network troubleshooting and diagnostics.', 'https://en.wikipedia.org/wiki/Dig_(command)', 'https://github.com/iagox86/dnsutils', 'Yes', NULL, 'dig', NULL, NULL, 'Vulnerability Analysis', 'Information Gathering', NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (27, 'Dig', 'Dig', 'information-gathering','The `dig` command queries DNS servers to retrieve domain name information, helping with network troubleshooting and diagnostics.', 'https://www.isc.org/bind/', 'https://gitlab.isc.org/isc-projects/bind9', 'Yes', NULL, 'dig', NULL, NULL, 'Vulnerability Analysis', 'Information Gathering', NULL);
 
 
 COMMIT;
