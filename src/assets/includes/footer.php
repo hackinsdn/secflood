@@ -14,3 +14,11 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/argon.js?v=1.0.0"></script>
 <script src="assets/js/canvasjs.min.js"></script>
+<!-- Analytics measurements -->
+<?php
+$gtag = getenv("GTAG");
+if ($gtag) {
+   echo "<script async src='https://www.googletagmanager.com/gtag/js?id=$gtag'></script>\n";
+   echo "<script>\nwindow.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config', '$gtag');\n</script>\n";
+}
+?>
