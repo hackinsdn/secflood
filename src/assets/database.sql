@@ -366,6 +366,54 @@ INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `comm
 ('Zerocopy', '(client only) Use a "zero copy" method of sending data', 'iperf3 --zerocopy', 19, 'checkbox', '--zerocopy', NULL),
 ('Dont fragment', '(client only) Set the IPv4 Dont Fragment (DF) bit on outgoing packets', 'iperf3', 19, 'checkbox', '--dont-fragment', NULL);
 
+--
+-- Populate data for `commands`: dig
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES 
+('IPv4 only', 'Use IPv4 query transport only', 'dig -4 example.com', 27, 'checkbox', '-4', NULL, NULL, 'QUERY OPTIONS'),
+('IPv6 only', 'Use IPv6 query transport only', 'dig -6 example.com', 27, 'checkbox', '-6', NULL, NULL, 'QUERY OPTIONS'),
+('addr/port (opt)', 'Bind to source address/port', 'dig -b 10.0.0.1#80', 27, 'input', '-b', NULL, NULL, 'QUERY OPTIONS'), 
+('Query Class', 'The most commonly used class is IN (Internet), which is the default for most DNS queries. However, there are other classes like CH (Chaos) and HS (Hesiod) which are less used', 'dig -c HS example.com', 27, 'input', '-c', NULL, NULL, 'QUERY OPTIONS'),
+('Port Number', 'Specifies the port number for the query', 'dig -p 80 example.com', 27, 'input', '-p', NULL, NULL, 'QUERY OPTIONS'),
+('Query Name', 'Specifies the query name for the DNS lookup', 'dig -q example.com', 27, 'input', '-q', NULL, NULL, 'QUERY OPTIONS'),
+('Query Type', 'Specifies the query type', 'dig -t MX example.com', 27, 'input', '-t', NULL, NULL, 'QUERY OPTIONS'),
+('Reverse Lookup', 'Set IP address which will be used for reverse lookup', 'dig -x 10.0.0.1', 27, 'input', '-x', NULL, NULL, 'QUERY OPTIONS'),
+('Display Flags', 'Set or Clear All Display Flags', 'dig +[no]all example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Answer Section', 'Control Display of Answer Section', 'dig +[no]answer example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Authority Section', 'Control Display of Authority Section', 'dig +[no]authority example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Question Section', 'Control Display of Question Section', 'dig +[no]question example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Stats', 'Control Display of Stats', 'dig +[no]stats example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('DNSSEC', 'Request DNSSEC Records', 'dig +[no]dnssec example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Display TTL', 'Display Time to Live (TTL) in Records', 'dig +[no]ttlid example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Human-Readble TTL', 'Display TTL in Human-Readable Units', 'dig +[no]ttlunits example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Set Query Timeout', NULL, 'dig +timeout=5 example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS'),
+('Per-Record Comments', 'Control Display of Per-Record Comments', 'dig +[no]rrcomments example.com', 27, 'input', NULL, NULL, NULL, 'DISPLAY OPTIONS');
+
+--
+-- Populate data for `commands`: dnsenum
+--
+INSERT INTO `commands` (`name`, `description`, `examples`, `tool`, `type`, `command`, `example`, `sudo`, `category`) VALUES 
+('Set DNS server', 'Use this DNS server for A, NS and MX queries.', 'dnsenum --dnsserver 10.0.0.1 example.com', 14, 'input', '--dnsserver', NULL, NULL, 'GENERAL OPTIONS'),
+('Set --enum switch', 'Shortcut option equivalent to --threads 5 -s 15 -w.',  NULL, 14, 'checkbox', '--enum', NULL, NULL, 'GENERAL OPTIONS'),
+('Skip reverse lookup', 'Skip the reverse lookup (reverse DNS searc) operations.', NULL, 14, 'checkbox', '--noreverse', NULL, NULL, 'GENERAL OPTIONS'),
+('No colors','Disable ANSIColor output, i.e., disables output with colored text.', NULL, 14, 'checkbox', '--nocolor', NULL, NULL, 'GENERAL OPTIONS'),
+('Private ips at the end', 'Show and save private ips at the end of the file domain_ips.txt.', NULL, 14, 'checkbox', '--private', NULL, NULL, 'GENERAL OPTIONS'),
+('File to save subdomains','Write all valid subdomains to the chosen file.', 'dnsenum --subfile subdomains_obtained.txt example.com', 14, 'input', '--subfile', NULL, NULL, 'GENERAL OPTIONS'),
+('Timeout setting','The tcp and udp timeout values in seconds. Defines he interval of time in which dnsenum waits from an answer from the DNS server (default: 10s).', 'dnsenum -t 10 example.com', 14, 'input', '-t', NULL, NULL, 'GENERAL OPTIONS'),
+('Threads setting', 'The number of threads that will perform different queries.', 'dnsenum --threads 5 example.com', 14, 'checkbox', '--threads', NULL, NULL, 'GENERAL OPTIONS'),
+('Verbose output', 'Be verbose: show all the progress and all the error messages.', NULL, 14, 'checkbox', '-v', NULL, NULL, 'GENERAL OPTIONS'),
+('Google pages scrapping', 'The number of google search pages to process when scraping names, the default is 5 pages, the -s switch must be specified.', 'dnsenum -p 15 - 20 example.com', 14, 'input', '-p', NULL, NULL, 'GOOGLE SCRAPPING OPTIONS'),
+('Subdomains scrapping', 'The maximum number of subdomains that will be scraped from Google (default 15)', 'dnsenum -s 40 example.com', 14, 'input', '-s', NULL, NULL, 'GOOGLE SCRAPPING OPTIONS: SUBDOMAINS'),
+('Choose the brute force file', 'Read subdomains from this file to perform brute force. (Takes priority over default dns.txt)', 'dnsenum -f subdomains.txt example.com', 14, 'input', '-f', NULL, NULL, 'SUBDOMAIN BRUTE FORCE'), 
+('Update brute force file using all results', 'This command updates the file specified with the -f switch.', NULL, 14, 'checkbox', '-u a', NULL, NULL, 'BRUTE FORCE OPTIONS: UPDATE FILE'),
+('Update brute force file using google scrapping results', 'This command updates the file specified with the -f switch.', NULL, 14, 'checkbox', '-u g', NULL, NULL, 'BRUTE FORCE OPTIONS: UPDATE FILE'),
+('Update brute force file using zonetransfer results', 'This command updates the file specified with the -f switch.', NULL, 14, 'checkbox', '-u z', NULL, NULL, 'BRUTE FORCE OPTIONS: UPDATE FILE'),
+('Recursion on subdomains', 'Executes a brute force in all discovered subdomains that have an NS record.', NULL, 14, 'checkbox', '-r', NULL, NULL, 'BRUTE FORCE OPTIONS: RECURSION'),
+('whois queries', 'Perform the whois queries on c class network ranges.**Warning**: this can generate very large netranges and it will take lot of time to perform reverse lookups.', 'dnsenum -w example.com', 14, 'checkbox', '-w', NULL, NULL, 'WHOIS NETRANGE OPTIONS'),
+('whois queries delay', 'The maximum value of seconds to wait between whois queries, the value is defined randomly, default: 3s.', 'dnsenum -w -d 5 example.com', 14, 'input', '-d', NULL, NULL, 'WHOIS NETRANGE OPTIONS: DELAY'),
+('PTR records exclusion', 'Exclude PTR records that match the regexp expression from reverse lookup results, useful on invalid hostnames. In this sense, when a reverse lookup is made, subdomains with the defined words are not considered.', 'dnsenum -e "(test|local|invalid)" examples.', 14, 'input', '-e', NULL, NULL, 'REVERSE LOOKUP OPTIONS'),
+('Output in XML format (Choose the file)', 'Can be imported in MagicTree (www.gremwell.com).', 'dnsenum -o output.xml example.com', 14, 'input', '-o', NULL, NULL, 'OUTPUT OPTIONS');
+
 -- --------------------------------------------------------
 
 --
@@ -431,7 +479,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 (10, 'Sqlninja', 'Sqlninja', 'vulnerability-analysis  web-applications', 'https://tools.kali.org/vulnerability-analysis/sqlninja', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Vulnerability Analysis', 'Web Applications', NULL),
 (11, 'Powerfuzzer', 'Powerfuzzer', 'vulnerability-analysis  web-applications', 'https://tools.kali.org/vulnerability-analysis/powerfuzzer', 'https://www.powerfuzzer.com/', NULL, NULL, NULL, NULL, NULL, NULL, 'Vulnerability Analysis', 'Web Applications', NULL),
 (12, 'ProxyStrike', 'ProxyStrike', 'web-applications', 'https://tools.kali.org/web-applications/proxystrike', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Web Applications', NULL, NULL),
-(14, 'Dnsenum', 'Dnsenum', 'information-gathering', 'https://tools.kali.org/information-gathering/dnsenum', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Information Gathering', NULL, NULL),
+(14, 'Dnsenum', 'Dnsenum', 'information-gathering','The main purpose of Dnsenum is to gather as much information as possible about a domain.', 'https://tools.kali.org/information-gathering/dnsenum', 'https://github.com/SparrowOchon/dnsenum2', 'Yes', NULL, 'dnsenum', NULL, NULL, 'Vulnerability Analysis', 'Information Gathering', NULL),
 (15, 'Karma', 'Karma', 'information-gathering', NULL, NULL, 'https://github.com/decoxviii/karma', NULL, 'assets/img/github.jpg', 'karma', 'target', 'Find leaked emails with your passwords.', 'Information Gathering', NULL, '<b>Karma</b> find leaked emails with your passwords. If you have located a known password linked to your email, you MUST change it immediately.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>It is recommended to <b>change the password of your email and all the services you use</b> (Facebook, Twitter, Snapchat, Instagram, Netflix, Spotify, etc). To do so, go to the official website or service app and change your password in SETTINGS.</p>\r\n\r\n<p><b>Create a strong password</b> that is totally different from the current one and avoid using personal data such as date of birth, name, cpf, etc. Combining letters, numbers and special characters will only increase your security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
 (16, 'TRex', 'TRex: Realistic Traffic Generator', 'benign script-driven', 'https://trex-tgn.cisco.com', 'https://trex-tgn.cisco.com', 'https://github.com/cisco-system-traffic-generator', 'Yes', 'assets/img/trex.png', 'trex', NULL, 'TRex is an open source, low cost, stateful and stateless traffic generator fuelled by DPDK. It generates L3-7 traffic, and supports Stateless and Advanced Stateful functionality.', 'Benign', 'Script-driven', '<b>TRex</b> works by generating traffic using a stateless and statefull approach.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p></p>\r\n\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p></p>'),
 (17, 'httperf', 'httperf', 'benign application-level', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', 'https://github.com/httperf/httperf', NULL, NULL, 'httperf', NULL, NULL, 'Benign', 'Application level', '<b>NameTool</b> is aimed at testing the performance of a cybersecurity tools by generating real background network traffic.\r\n\r\n<h2 style=''color: white''>FIX THIS</h2>\r\n<p>TODO change me, <b>change me!</b> (XPTO, Foobar, etc). <p>Testing 123, tool to generate traffic security.</p>\r\n\r\n<h2 style=''color: white''>PROTECTION</h2>\r\n<p>To increase your security, it is recommended that you <b>enable two-factor authentication</b>.</p>'),
@@ -445,6 +493,7 @@ INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `sit
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (24, 'h2t', 'HTTP Hardening Tool', 'benign vulnerability-analysis', 'h2t (HTTP Hardening Tool) scans a website and suggests security headers to apply', 'https://certbahia.pop-ba.rnp.br/projects/h2t/', 'https://github.com/gildasio/h2t', 'Yes', NULL, 'h2t scan', '-- ', NULL, 'Benign', 'Vulnerability Analysis', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (25, 'arjun', 'arjun', 'information-gathering web-application', 'HTTP parameter discovery suite', NULL, 'https://github.com/s0md3v/Arjun', 'Yes', 'assets/img/arjun.png', 'arjun', '-u', NULL, 'Information-Gathering', 'Web-Application', NULL);
 INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (26, 'sqlmap', 'sqlmap', 'web-application vulnerability-analysis', 'Automatic SQL injection and database takeover tool', 'https://sqlmap.org/', 'https://github.com/sqlmapproject/sqlmap', 'Yes', NULL, 'sqlmap --batch', '-u', NULL, 'Web-Application', 'Vulnerability-Analysis', NULL);
+INSERT INTO `tools` (`id`, `name`, `fullname`, `categories`, `description`, `site`, `github`, `released`, `avatar`, `cmd`, `target`, `resume`, `category`, `category2`, `solution`) VALUES (27, 'Dig', 'Dig', 'information-gathering','The `dig` command queries DNS servers to retrieve domain name information, helping with network troubleshooting and diagnostics.', 'https://www.isc.org/bind/', 'https://gitlab.isc.org/isc-projects/bind9', 'Yes', NULL, 'dig', NULL, NULL, 'Vulnerability Analysis', 'Information Gathering', NULL);
 
 
 COMMIT;
