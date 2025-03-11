@@ -24,6 +24,9 @@ cp /var/lib/shellinabox/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 # force SSL cert to be recreated
 make-ssl-cert --force-overwrite generate-default-snakeoil
 
+# Export Environment Vars
+echo "SetEnv GTAG \"${GTAG}\"" >> /etc/apache2/conf-enabled/environment.conf
+
 # start services
 service ssh start
 service apache2 start
