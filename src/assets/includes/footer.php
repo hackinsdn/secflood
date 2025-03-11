@@ -14,3 +14,14 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/argon.js?v=1.0.0"></script>
 <script src="assets/js/canvasjs.min.js"></script>
+<!-- Analytics measurements -->
+<?php
+$jsfile = getenv("ANALYTICS_JSFILE");
+if ($jsfile) {
+   echo "<script async src='$jsfile'></script>\n";
+}
+$script = getenv("ANALYTICS_SCRIPT");
+if ($script) {
+   echo "<script>\n$script\n</script>\n";
+}
+?>
