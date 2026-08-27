@@ -2,6 +2,10 @@
 
 ## [UNRELEASED] - Under development
 
+- TODO
+
+## [1.0.0] - 2026-08-26
+
 - Added new tools: slowloris (#21), ping (#31), nikto (25), hping3 (#15),
                    traceroute (#32), h2t (#23), arjun (#28), sqlmap (#22),
                    iperf (#33), dig (#27), dnsenum (#14)
@@ -13,8 +17,3 @@
 - Fix bug to execute commands (#11)
 - Support parameter specification without spaces (commit 709942a)
 - Add `--tamper` on SQLmap (#56)
-
-## [1.0.0] - DATE_TODO
-
-- TODO
-
